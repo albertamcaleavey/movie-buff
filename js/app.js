@@ -12,8 +12,9 @@
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-let win
-// if a game is in progress
+// if the player won
+let gameStatus
+// checking if game is in progress, game over, or game won
 let boardSpots = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
 /*------------------------ Cached Element References ------------------------*/
@@ -29,20 +30,31 @@ let message = document.getElementById('message')
 init()
 
 function init() {
-  win = null
-  boardSpots = [null, 1, null, 2, null, 5, null, null, null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+  game = null
+  boardSpots = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   renderBoard()
 }
+
 
 
 // display prices on boxes using board array
 
 function renderBoard() {
+  // updates the board to display which boxes have already been picked 
   boardSpots.forEach(function(el, idx){
     if(el !== null) {
          boxes[idx].innerText = ""
     } 
   })
+  // displays message based on status of game
+  if(game === null){
+    message.innerText = "Pick Again "
+  } else if (game === "over") {
+    message.innerText = "Game Over"
+  } else if (game === "won") {
+    message.innerText = "You won!"
+  }
+ 
 }
 
 
@@ -57,3 +69,9 @@ function renderBoard() {
 // function ongoingGame() {
 
 // } 
+
+// if(boardSpots.every(function(el){
+//   el !== null
+// })){
+//   ongoingGame === false
+// }
