@@ -54,7 +54,6 @@ function renderBoard() {
   } else if (game === "won") {
     message.innerText = "You won!"
   }
- 
 }
 
 
