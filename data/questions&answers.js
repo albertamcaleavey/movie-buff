@@ -14,19 +14,19 @@ const questions = [
   "In 2020, this became the first forgein film to win best picture",
   "This actress has won four oscars, including two for her performances in Fargo and Three Billboards Outside Ebbing, Missouri ",
  " The first black woman to win an oscar, she won Best Performance by an Actress in a Leading Role in 1940 for her role in Gone With the Wind",
-" Ryan Gosling and Rachel McAdams star in this 2004 romance based on the novel by Nicholas Sparks",
-"An undercover cop and a mole in the police attempt to identify each other in this crime thriller directed by Martin Scorsese",
-"A San Francisco cartoonist becomes obsessed with tracking down a serial killer in this 2007 film",
-"Jason Segel heads to Hawaii after being dumped by his TV-star girlfriend in this 2008 comedy.",
-"A paraplegic marine is sent on a unique mission in this highest grossing movie of the decade directed by James Cameron. ",
-"You talkin' to me?",
-"Here’s looking at you, kid.",
-"As if!", 
-"Hello, my name is Inigo Montoya, you killed my father, prepare to die.",
-"There's no crying in baseball!"
-]
-
-const answers = [
+ " Ryan Gosling and Rachel McAdams star in this 2004 romance based on the novel by Nicholas Sparks",
+ "An undercover cop and a mole in the police attempt to identify each other in this crime thriller directed by Martin Scorsese",
+ "A San Francisco cartoonist becomes obsessed with tracking down a serial killer in this 2007 film",
+ "Jason Segel heads to Hawaii after being dumped by his TV-star girlfriend in this 2008 comedy.",
+ "A paraplegic marine is sent on a unique mission in this highest grossing movie of the decade directed by James Cameron. ",
+ "You talkin' to me?",
+ "Here’s looking at you, kid.",
+ "As if!",
+ "Hello, my name is Inigo Montoya, you killed my father, prepare to die.",
+ "There's no crying in baseball!"
+ ]
+  
+ const answers = [
   "The Wizard of Oz",
   "Broom",
   "Sandra Bullock",
@@ -40,16 +40,17 @@ const answers = [
  "Titanic",
  "West Side Story",
  "Parasite",
-"Frances McDormand",
-"Hattie McDaniel",
-"The Notebook",
-"The Departed",
-"Zodiac",
-"Forgetting Sarah Marshall",
-"Avatar",
-"Taxi Driver",
-"Casablanca",
-"Clueless",
-"The Princess Bride",
-"A League of Their Own",
-]
+ "Frances McDormand",
+ "Hattie McDaniel",
+ "The Notebook",
+ "The Departed",
+ "Zodiac",
+ "Forgetting Sarah Marshall",
+ "Avatar",
+ "Taxi Driver",
+ "Casablanca",
+ "Clueless",
+ "The Princess Bride",
+ "A League of Their Own",
+ ]
+ 
