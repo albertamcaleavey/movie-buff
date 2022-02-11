@@ -9,37 +9,39 @@
 
 
   /*-------------------------------- Constants --------------------------------*/
-
+import{questions, answers} from "../data/questions&answers.js"
 
 /*---------------------------- Variables (state) ----------------------------*/
 // if the player won
-let gameStatus
+let game
 // checking if game is in progress, game over, or game won
 let boardSpots = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+let currentQuestion
 
 /*------------------------ Cached Element References ------------------------*/
 let boxes = document.querySelectorAll('.box')
+let board = document.getElementById('board')
 let message = document.getElementById('message')
 // console.log(boxes)
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+board.addEventListener("click", handleClick)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
 
 function init() {
   game = null
-  boardSpots = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-  renderBoard()
+  boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
+  render()
 }
 
 
 
 // display prices on boxes using board array
 
-function renderBoard() {
+function render() {
   // updates the board to display which boxes have already been picked 
   boardSpots.forEach(function(el, idx){
     if(el !== null) {
@@ -56,6 +58,20 @@ function renderBoard() {
   }
 }
 
+function handleClick(evt) {
+  // find the id of the element that was clicked 
+  let clickedBoxId = evt.target.id
+  // separates the number from the rest of the id
+  // turns the id into a number with parseInt
+  let clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
+  // find the corresponding question in the questions array
+  currentQuestion = questions[clickedIdx]
+  console.log(currentQuestion)
+  // call render function to display the question
+  render()
+  // check if there's a win
+  checkWin()
+}
 
 // display a question based on which box was clicked
 // function renderQuestion() {

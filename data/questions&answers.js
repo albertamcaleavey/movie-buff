@@ -54,3 +54,5 @@ const questions = [
  "A League of Their Own",
  ]
  
+
+ export {questions, answers}
