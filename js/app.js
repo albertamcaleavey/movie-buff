@@ -22,7 +22,7 @@ let currentQuestion
 let boxes = document.querySelectorAll('.box')
 let board = document.getElementById('board')
 let message = document.getElementById('message')
-// console.log(boxes)
+let card = document.querySelector('.card')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -66,7 +66,10 @@ function handleClick(evt) {
   let clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
   // find the corresponding question in the questions array
   currentQuestion = questions[clickedIdx]
-  console.log(currentQuestion)
+  // set the current question text to the card
+  card.innerText = currentQuestion
+  // show the card- should this go in render?
+  card.style.display = "inline"
   // call render function to display the question
   render()
   // check if there's a win

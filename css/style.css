@@ -71,3 +71,9 @@ h1 {
   grid-column: 2;
   grid-row: 4;
 }
+
+.card {
+  grid-column: 2;
+  grid-row: 3;
+  display: none;
+}
