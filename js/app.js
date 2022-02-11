@@ -14,7 +14,7 @@
 /*---------------------------- Variables (state) ----------------------------*/
 let win
 // if a game is in progress
-let board
+let board = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
 /*------------------------ Cached Element References ------------------------*/
 let boxes = document.querySelectorAll('.box')
@@ -28,17 +28,17 @@ console.log(message)
 
 function init() {
   win = null
-  board = []
+  board = [null, null, null, null, null, null, null, null, null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+  render()
 }
 
 
 // display prices on boxes using board array
-// 
-// function render() {
-//   board = [
-    
-//   ]
-// }
+
+function render() {
+  board = [ "$200", "$200", "$200", "$200", "$200", "$400", "$400", "$400", "$400", "$400", "$600", "$600", "$600", "$600", "$600", "$800", "$800", "$800", "$800", "$800", "$1000", "$1000", "$1000", "$1000", "$1000"  
+  ]
+}
 
 
 // display a question based on which box was clicked

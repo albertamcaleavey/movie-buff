@@ -53,11 +53,16 @@ h1 {
 #board {
   display: grid;
   grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(6, auto);
   border: 1px black solid;
   grid-column: 2;
   grid-row: 3;
 }
 
 .box {
+  border: 1px black solid;
+}
+
+.cat {
   border: 1px black solid;
 }
