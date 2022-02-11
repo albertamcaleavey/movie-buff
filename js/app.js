@@ -17,16 +17,21 @@ let game
 // checking if game is in progress, game over, or game won
 let boardSpots = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 let currentQuestion
+let clickedIdx
 
 /*------------------------ Cached Element References ------------------------*/
 let boxes = document.querySelectorAll('.box')
 let board = document.getElementById('board')
 let message = document.getElementById('message')
 let card = document.querySelector('.card')
+let submitAns = document.getElementById("button-addon2")
+let input 
+let userGuess
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-board.addEventListener("click", handleClick)
+board.addEventListener("click", handleBoxClick)
+submitAns.addEventListener("click", handleSubmitAns)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -49,21 +54,23 @@ function render() {
     } 
   })
   // displays message based on status of game
-  if(game === null){
-    message.innerText = "Pick Again "
-  } else if (game === "over") {
-    message.innerText = "Game Over"
-  } else if (game === "won") {
-    message.innerText = "You won!"
-  }
+  message.innerText = userGuess
+  // if(game === null){
+  //   message.innerText = "Pick Again "
+  // } else if (game === "over") {
+  //   message.innerText = "Game Over"
+  // } else if (game === "won") {
+  //   message.innerText = "You won!"
+  // }
+
 }
 
-function handleClick(evt) {
+function handleBoxClick(evt) {
   // find the id of the element that was clicked 
   let clickedBoxId = evt.target.id
   // separates the number from the rest of the id
   // turns the id into a number with parseInt
-  let clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
+  clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
   // find the corresponding question in the questions array
   currentQuestion = questions[clickedIdx]
   // set the current question text to the card
@@ -73,8 +80,27 @@ function handleClick(evt) {
   // call render function to display the question
   render()
   // check if there's a win
-  checkWin()
+  // checkWin()
 }
+
+function handleSubmitAns() {
+  input = document.querySelector('.form-control').value.toLowerCase()
+console.log(input)
+  
+  checkAns()
+  render()
+}
+
+function checkAns() {
+  if(input === answers[clickedIdx]){
+    userGuess = "correct"
+  } else {
+    userGuess = "incorrect"
+  }
+}
+
+
+
 
 // display a question based on which box was clicked
 // function renderQuestion() {
