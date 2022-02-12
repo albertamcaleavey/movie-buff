@@ -9,7 +9,7 @@ const winScore = 7500
 let game
 // checking if game is in progress, game over, or game won
 let boardSpots = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
-let currentQuestion
+
 let clickedIdx
 let playerAns
 let score
@@ -32,7 +32,6 @@ init()
 
 function init() {
   game = null
-  currentQuestion = null
   clickedIdx = null
   playerAns = null
   score = 0
@@ -45,12 +44,14 @@ function init() {
   // displays instructions
 
 function render() {
+   //PUT IT SECOND RENDER FUNCTION???
   // updates the board to display which boxes have already been picked 
 boardSpots.forEach(function(el, idx){
     if(el !== null) {
          boxes[idx].innerText = ""
     } 
   })
+
   // displays message based on status of game
   if(game === null){
     message.innerText = "instructions"
@@ -59,12 +60,8 @@ boardSpots.forEach(function(el, idx){
   } else if (game === "win") {
     message.innerText = "You won!"
   }
-  // if all squares are null, show instructions 
-  // if(boardSpots.every(function(spot){
-  //   spot === null
-  // })) {
-  //   message.innerText = "Instructions"
-  // }
+  
+ //PUT IT SECOND RENDER FUNCTION???
   if(playerAns === "correct") {
     message.innerText = "Correct! Pick again"
   } else if (playerAns === "incorrect") {
@@ -81,25 +78,28 @@ function handleBoxClick(evt) {
   // separates the number from the rest of the id
   // turns the id into a number with parseInt
   clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
+  // call render Question
+  renderQuestion()
+}
 
+//-----------------------DISPLAYS-QUESTION----------------------//
+
+function renderQuestion() {
   // find the corresponding question
-  currentQuestion = questions[clickedIdx]
+  let currentQuestion = questions[clickedIdx]
   // set the current question text to the card
   card.innerText = currentQuestion
   // show the card- should this go in render?
   card.style.display = "inline"
   // call render function to display the question
-  render()
 }
 
 
 //---------------------WHEN-ANSWER-IS-SUBMITED----------------------//
-
+// change name to check answer??
 function handleSubmitAns() {
 // get the user input and makes it all lowercase
 let input = document.querySelector('.form-control').value.toLowerCase()
-
-// SHOULD THIS GO IN A CHECK ANSWER FUNCTION???
 // checks if input is correct: updates playerAns variable and score
 if(input === answers[clickedIdx]){
     playerAns = "correct"
@@ -107,8 +107,9 @@ if(input === answers[clickedIdx]){
     console.log(score)
   } else {
     playerAns= "incorrect"
-    // call a render answer function??
+    // call a render correct answer function??
   }
+// MAKE A SECOND RENDER FUNCTION?? 
 // update the index of the board array 
 boardSpots[clickedIdx] = ""
 // clear input field (should form be stored as cached element reference since you refer to it more than once??)
@@ -133,7 +134,7 @@ console.log(checkBoard)
 if(checkBoard=== true){
   // call another function to check win?
   checkWin()
-}
+} 
 }
 
 // if score is greater than winning score, update game variable to win in order to trigger render win message (extra: display how many questions they got right)
