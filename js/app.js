@@ -107,6 +107,7 @@ if(input === answers[clickedIdx]){
     console.log(score)
   } else {
     playerAns= "incorrect"
+    // call a render answer function??
   }
 // update the index of the board array 
 boardSpots[clickedIdx] = ""
@@ -117,13 +118,13 @@ document.querySelector('.form-control').value = ""
 
   render()
   // check if there's a win
-  checkWin()
+  checkGameStatus()
 }
 
 //-----------------------CHECK-STATUS-OF-GAME-----------------------//
   
 // change to checkGameStatus????
-function checkWin(){
+function checkGameStatus(){
 // if all squares are empty, game is over=> check if player has won depending on if score is greater than a certain number 
 let checkBoard = boardSpots.every(function(spot) {
   return spot !== null
@@ -131,31 +132,27 @@ let checkBoard = boardSpots.every(function(spot) {
 console.log(checkBoard)
 if(checkBoard=== true){
   // call another function to check win?
+  checkWin()
 }
+}
+
 // if score is greater than winning score, update game variable to win in order to trigger render win message (extra: display how many questions they got right)
 
 // if score is less than winning score, update game variable to loss to render message 
 
+function checkWin() {
+  if(score >= winScore){
+    game === "win"
+  } else if (score < winScore) {
+    game === "loss"
+  }
+  render()
 }
+
 
 
 // RENDER FLOW
 // 1. show instructions
 // 2. after first pick, while game is ongoing, show if answer was right or wrong and to pick again
 // 3. if game is over, (all squares empty/clicked), show if player won or lost and to play again
-
-
-
-// check if a game is in progress
-  // game is over when all boxes are empty
-  // player wins if they make over a certain number of points
-// function ongoingGame() {
-
-// } 
-
-// if(boardSpots.every(function(el){
-//   el !== null
-// })){
-//   ongoingGame === false
-// }
 
