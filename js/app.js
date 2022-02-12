@@ -50,36 +50,35 @@ function init() {
   // displays instructions
 
 function render() {
-
   // updates the board to display which boxes have already been picked 
-  
+boardSpots.forEach(function(el, idx){
+    if(el !== null) {
+         boxes[idx].innerText = ""
+    } 
+  })
   // displays message based on status of game
+  if(game === null){
+    message.innerText = "instructions"
+  } else if (game === "over") {
+    message.innerText = "Game Over"
+  } else if (game === "won") {
+    message.innerText = "You won!"
+  }
   // if all squares are null, show instructions 
   // if(boardSpots.every(function(spot){
   //   spot === null
   // })) {
   //   message.innerText = "Instructions"
   // }
-
-  // if(game === null) {
-  //   message.innerText = "instrtuctions"
-  // }
-  boardSpots.forEach(function(el, idx){
-    if(el !== null) {
-         boxes[idx].innerText = ""
-    } 
-  })
-  card.style.display = "none"
   if(playerAns === "correct") {
     message.innerText = "Correct! Pick again"
   } else if (playerAns === "incorrect") {
     message.innerText = "Incorrect, pick again"
   }
-
 }
 
 
-
+//---------------------WHEN-BOX-IS-CLICKED----------------------//
 
 function handleBoxClick(evt) {
   // find the id of the element that was clicked 
@@ -87,7 +86,9 @@ function handleBoxClick(evt) {
   // separates the number from the rest of the id
   // turns the id into a number with parseInt
   clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
+  boardSpots[clickedIdx] = ""
   // find the corresponding question in the questions array
+  // update the index of the board array 
   currentQuestion = questions[clickedIdx]
   // set the current question text to the card
   card.innerText = currentQuestion
@@ -99,6 +100,8 @@ function handleBoxClick(evt) {
   // checkWin()
 }
 
+//---------------------WHEN-ANSWER-IS-SUBMITED----------------------//
+
 function handleSubmitAns() {
 let input = document.querySelector('.form-control').value.toLowerCase()
 console.log(input)
@@ -108,19 +111,22 @@ if(input === answers[clickedIdx]){
   } else {
     playerAns= "incorrect"
   }
-  
+  // SHOULD THE BELOW GO IN A SECOND RENDER FUNCTION???
+  card.style.display = "none"
   render()
 }
 
 
   
+function
 
 
+// RENDER FLOW
+// 1. show instructions
+// 2. after first pick, while game is ongoing, show if answer was right or wrong and to pick again
+// 3. if game is over, (all squares empty/clicked), show if player won or lost and to play again
 
-// display a question based on which box was clicked
-// function renderQuestion() {
 
-// }
 
 // check if a game is in progress
   // game is over when all boxes are empty
@@ -135,7 +141,3 @@ if(input === answers[clickedIdx]){
 //   ongoingGame === false
 // }
 
-
-// 1. show instructions
-// 2. after first pick, while game is ongoing, show if answer was right or wrong and to pick again
-// 3. if game is over, (all squares empty/clicked), show if player won or lost and to play again
