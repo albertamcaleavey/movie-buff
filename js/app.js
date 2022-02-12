@@ -110,8 +110,11 @@ if(input === answers[clickedIdx]){
   }
 // update the index of the board array 
 boardSpots[clickedIdx] = ""
-  // SHOULD THIS GO IN A SECOND RENDER FUNCTION???
+// clear input field (should form be stored as cached element reference since you refer to it more than once??)
+document.querySelector('.form-control').value = ""
+// SHOULD THIS GO IN A SECOND RENDER FUNCTION???
   card.style.display = "none"
+
   render()
   // check if there's a win
   checkWin()
@@ -119,9 +122,16 @@ boardSpots[clickedIdx] = ""
 
 //-----------------------CHECK-STATUS-OF-GAME-----------------------//
   
+// change to checkGameStatus????
 function checkWin(){
 // if all squares are empty, game is over=> check if player has won depending on if score is greater than a certain number 
-
+let checkBoard = boardSpots.every(function(spot) {
+  return spot !== null
+})
+console.log(checkBoard)
+if(checkBoard=== true){
+  // call another function to check win?
+}
 // if score is greater than winning score, update game variable to win in order to trigger render win message (extra: display how many questions they got right)
 
 // if score is less than winning score, update game variable to loss to render message 
