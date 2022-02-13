@@ -72,8 +72,13 @@ function render() {
 //---------------------WHEN-BOX-IS-CLICKED----------------------//
 
 function handleBoxClick(evt) {
+  let clickedBox = evt.target
+  // if a category box is clicked, nothing happens
+  if(clickedBox.className === "cat"){
+    return
+  }
   // find the id of the element that was clicked 
-  let clickedBoxId = evt.target.id
+  let clickedBoxId = clickedBox.id
   // separates the number from the rest of the id
   // turns the id into a number with parseInt
   clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
