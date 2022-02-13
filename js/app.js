@@ -17,11 +17,13 @@ let score
 /*------------------------ Cached Element References ------------------------*/
 let boxes = document.querySelectorAll('.box')
 let board = document.getElementById('board')
+// having boxes and board may be repetitive 
 let message = document.getElementById('message')
 let card = document.querySelector('.card')
 let submitAns = document.getElementById("button-addon2")
 let replayBtn = document.querySelector(".btn-primary")
 let form = document.querySelector(".input-group")
+let scoreboard = document.getElementById("score")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -40,8 +42,13 @@ function init() {
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
   card.style.display = "none"
   form.style.display = "none"
-  //hide input
+  scoreboard.style.display = "none"
   //assign prices to divs
+  document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
+  document.querySelectorAll(".four-hun").forEach((el) => el.innerText = "400")
+  document.querySelectorAll(".six-hun").forEach((el) => el.innerText = "600")
+  document.querySelectorAll(".eight-hun").forEach((el) => el.innerText = "800")
+  document.querySelectorAll(".thous").forEach((el) => el.innerText = "1000")
   render()
 }
 
@@ -84,7 +91,7 @@ function renderQuestion() {
   // show the card- should this go in render?
   card.style.display = "inline"
   // show the input form
-  form.style.display = "inline"
+  form.style.display = "inline-block"
 }
 
 
@@ -103,6 +110,9 @@ if(input === answers[clickedIdx]){
     playerAns= "incorrect"
     // call a render correct answer function??
   }
+
+
+  // SHOULD THIS GO IN A RENDER FUNCTION??
 // update the index of the board array 
 boardSpots[clickedIdx] = ""
 // clear input field 
@@ -129,6 +139,9 @@ function renderResult() {
   // shows a message stating whether the answer was right or wrong 
   if(playerAns === "correct") {
     message.innerText = "Correct! Pick again"
+    // show score board with updated score if answer is right
+    scoreboard.style.display = "inline"
+    scoreboard.innerText = score
   } else if (playerAns === "incorrect") {
     message.innerText = "Incorrect, pick again"
   }
