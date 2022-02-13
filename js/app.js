@@ -4,7 +4,7 @@ import{questions, answers} from "../data/questions&answers.js"
 
 const winScore = 7500
 // half of possible points
-// to win, score must be greate than 7500
+// to win, score must be greater than 7500
 /*---------------------------- Variables (state) ----------------------------*/
 let game
 // checking if game is in progress, game over, or game won
@@ -20,12 +20,14 @@ let board = document.getElementById('board')
 let message = document.getElementById('message')
 let card = document.querySelector('.card')
 let submitAns = document.getElementById("button-addon2")
+let replayBtn = document.querySelector(".btn-primary")
 
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 board.addEventListener("click", handleBoxClick)
-submitAns.addEventListener("click", handleSubmitAns)
+submitAns.addEventListener("click", checkAnswer)
+replayBtn.addEventListener("click", init)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -36,22 +38,16 @@ function init() {
   playerAns = null
   score = 0
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
+  card.style.display = "none"
   render()
 }
 
+// ----------------------RENDER-GAME-STATUS-----------------------//
 // starting game render
   // displays prices on boxes using board array
   // displays instructions
 
 function render() {
-   //PUT IT SECOND RENDER FUNCTION???
-  // updates the board to display which boxes have already been picked 
-boardSpots.forEach(function(el, idx){
-    if(el !== null) {
-         boxes[idx].innerText = ""
-    } 
-  })
-
   // displays message based on status of game
   if(game === null){
     message.innerText = "instructions"
@@ -60,13 +56,7 @@ boardSpots.forEach(function(el, idx){
   } else if (game === "win") {
     message.innerText = "You won!"
   }
-  
- //PUT IT SECOND RENDER FUNCTION???
-  if(playerAns === "correct") {
-    message.innerText = "Correct! Pick again"
-  } else if (playerAns === "incorrect") {
-    message.innerText = "Incorrect, pick again"
-  }
+  console.log(game)
 }
 
 
@@ -96,8 +86,9 @@ function renderQuestion() {
 
 
 //---------------------WHEN-ANSWER-IS-SUBMITED----------------------//
+
 // change name to check answer??
-function handleSubmitAns() {
+function checkAnswer() {
 // get the user input and makes it all lowercase
 let input = document.querySelector('.form-control').value.toLowerCase()
 // checks if input is correct: updates playerAns variable and score
@@ -109,51 +100,59 @@ if(input === answers[clickedIdx]){
     playerAns= "incorrect"
     // call a render correct answer function??
   }
-// MAKE A SECOND RENDER FUNCTION?? 
 // update the index of the board array 
 boardSpots[clickedIdx] = ""
-// clear input field (should form be stored as cached element reference since you refer to it more than once??)
+// clear input field 
 document.querySelector('.form-control').value = ""
-// SHOULD THIS GO IN A SECOND RENDER FUNCTION???
-  card.style.display = "none"
-
-  render()
+// hide question card
+card.style.display = "none"
+  renderResult()
   // check if there's a win
   checkGameStatus()
 }
+
+// ---------------------RENDER-RESULT-OF-ANSWER-------------------//
+
+
+function renderResult() {
+   // updates the board to display which boxes have already been picked 
+   boardSpots.forEach(function(spot, idx){
+    if(spot !== null) {
+         boxes[idx].innerText = ""
+    } 
+  })
+  // shows a message stating whether the answer was right or wrong 
+  if(playerAns === "correct") {
+    message.innerText = "Correct! Pick again"
+  } else if (playerAns === "incorrect") {
+    message.innerText = "Incorrect, pick again"
+  }
+}
+
 
 //-----------------------CHECK-STATUS-OF-GAME-----------------------//
   
 // change to checkGameStatus????
 function checkGameStatus(){
-// if all squares are empty, game is over=> check if player has won depending on if score is greater than a certain number 
+// checks if game is over
 let checkBoard = boardSpots.every(function(spot) {
   return spot !== null
 })
 console.log(checkBoard)
+// if the game is over, check for win/ loss
 if(checkBoard=== true){
-  // call another function to check win?
   checkWin()
 } 
 }
 
-// if score is greater than winning score, update game variable to win in order to trigger render win message (extra: display how many questions they got right)
-
-// if score is less than winning score, update game variable to loss to render message 
+//-------------------------CHECK-FOR-A-WIN-/-LOSS------------------//
 
 function checkWin() {
   if(score >= winScore){
-    game === "win"
+    game = "win"
   } else if (score < winScore) {
-    game === "loss"
+    game = "loss"
   }
+  console.log(game)
   render()
 }
-
-
-
-// RENDER FLOW
-// 1. show instructions
-// 2. after first pick, while game is ongoing, show if answer was right or wrong and to pick again
-// 3. if game is over, (all squares empty/clicked), show if player won or lost and to play again
-
