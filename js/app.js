@@ -21,7 +21,7 @@ let message = document.getElementById('message')
 let card = document.querySelector('.card')
 let submitAns = document.getElementById("button-addon2")
 let replayBtn = document.querySelector(".btn-primary")
-
+let form = document.querySelector(".input-group")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -39,6 +39,9 @@ function init() {
   score = 0
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
   card.style.display = "none"
+  form.style.display = "none"
+  //hide input
+  //assign prices to divs
   render()
 }
 
@@ -56,7 +59,6 @@ function render() {
   } else if (game === "win") {
     message.innerText = "You won!"
   }
-  console.log(game)
 }
 
 
@@ -81,7 +83,8 @@ function renderQuestion() {
   card.innerText = currentQuestion
   // show the card- should this go in render?
   card.style.display = "inline"
-  // call render function to display the question
+  // show the input form
+  form.style.display = "inline"
 }
 
 
@@ -106,6 +109,8 @@ boardSpots[clickedIdx] = ""
 document.querySelector('.form-control').value = ""
 // hide question card
 card.style.display = "none"
+// hide input form
+form.style.display = "none"
   renderResult()
   // check if there's a win
   checkGameStatus()
@@ -153,6 +158,5 @@ function checkWin() {
   } else if (score < winScore) {
     game = "loss"
   }
-  console.log(game)
   render()
 }
