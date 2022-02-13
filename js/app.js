@@ -23,7 +23,8 @@ let form = document.querySelector(".input-group")
 let submitAns = document.getElementById("button-addon2")
 let replayBtn = document.querySelector(".btn-primary")
 let scoreboard = document.getElementById("score")
-let timer = document.getElementById("timer")
+let progressBar = document.getElementById("timer")
+
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -41,8 +42,8 @@ function init() {
   score = 0
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
   card.style.display = "none"
-  // form.style.display = "none"
-  // timer.style.display = "none"
+  form.style.display = "none"
+  progressBar.style.display = "none"
   scoreboard.style.display = "none"
   //assign prices to divs
   document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
@@ -83,9 +84,28 @@ function handleBoxClick(evt) {
   // separates the number from the rest of the id
   // turns the id into a number with parseInt
   clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
-  // call render Question
   renderQuestion()
+  startTimer()
 }
+
+// -----------------------STARTS-TIMER----------------------------//
+
+
+function startTimer() {
+  let timeLeft = 30
+  let timer = setInterval(function() {
+    progressBar.textContent = timeLeft + " seconds remaining!"
+   timeLeft -= 1
+   if (timeLeft < 0) {
+      progressBar.textContent = "Time's Up!"
+     // add buzzer sound
+     clearInterval(timer)
+   }
+   console.log(timeLeft)
+}, 1000)
+}
+
+
 
 //-----------------------DISPLAYS-QUESTION----------------------//
 
@@ -97,9 +117,9 @@ function renderQuestion() {
   // show the card- should this go in render?
   card.style.display = "inline"
   // show the input form
-  // form.style.display = "inline-block"
+  form.style.display = "inline"
   // show timer
-  timer.style.display = "inline block"
+  progressBar.style.display = "inline"
 }
 
 
@@ -129,6 +149,8 @@ document.querySelector('.form-control').value = ""
 card.style.display = "none"
 // hide input form
 form.style.display = "none"
+// hide timer/ progress bar
+progressBar.style.display = "none"
   renderResult()
   // check if there's a win
   checkGameStatus()
@@ -185,5 +207,7 @@ function checkWin() {
 
 //------------------------------TIMER------------------------------//
 
-let timeLeft = 30
+
+
+
 
