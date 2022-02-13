@@ -8,8 +8,7 @@ const winScore = 7500
 /*---------------------------- Variables (state) ----------------------------*/
 let game
 // checking if game is in progress, game over, or game won
-let boardSpots = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
-
+let boardSpots = []
 let clickedIdx
 let playerAns
 let score
@@ -20,10 +19,11 @@ let board = document.getElementById('board')
 // having boxes and board may be repetitive 
 let message = document.getElementById('message')
 let card = document.querySelector('.card')
+let form = document.querySelector(".input-group")
 let submitAns = document.getElementById("button-addon2")
 let replayBtn = document.querySelector(".btn-primary")
-let form = document.querySelector(".input-group")
 let scoreboard = document.getElementById("score")
+let timer = document.getElementById("timer")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -41,7 +41,8 @@ function init() {
   score = 0
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
   card.style.display = "none"
-  form.style.display = "none"
+  // form.style.display = "none"
+  // timer.style.display = "none"
   scoreboard.style.display = "none"
   //assign prices to divs
   document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
@@ -60,9 +61,9 @@ function init() {
 function render() {
   // displays message based on status of game
   if(game === null){
-    message.innerText = "instructions"
+    message.innerText = "Select a question. If you get more than half the questions right, you win!"
   } else if (game === "loss") {
-    message.innerText = "Game Over, you lost"
+    message.innerText = "Game Over, you lost."
   } else if (game === "win") {
     message.innerText = "You won!"
   }
@@ -96,7 +97,9 @@ function renderQuestion() {
   // show the card- should this go in render?
   card.style.display = "inline"
   // show the input form
-  form.style.display = "inline-block"
+  // form.style.display = "inline-block"
+  // show timer
+  timer.style.display = "inline block"
 }
 
 
@@ -171,10 +174,16 @@ if(checkBoard=== true){
 //-------------------------CHECK-FOR-A-WIN-/-LOSS------------------//
 
 function checkWin() {
-  if(score >= winScore){
+  if(score > winScore){
     game = "win"
   } else if (score < winScore) {
     game = "loss"
   }
   render()
 }
+
+
+//------------------------------TIMER------------------------------//
+
+let timeLeft = 30
+
