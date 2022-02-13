@@ -12,6 +12,8 @@ let boardSpots = []
 let clickedIdx
 let playerAns
 let score
+let timer
+let timeLeft 
 
 /*------------------------ Cached Element References ------------------------*/
 let boxes = document.querySelectorAll('.box')
@@ -40,6 +42,7 @@ function init() {
   clickedIdx = null
   playerAns = null
   score = 0
+  timeLeft = 30
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
   card.style.display = "none"
   form.style.display = "none"
@@ -85,15 +88,15 @@ function handleBoxClick(evt) {
   // turns the id into a number with parseInt
   clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
   renderQuestion()
+
   startTimer()
+
 }
 
-// -----------------------STARTS-TIMER----------------------------//
-
+// ---------------------------TIMER----------------------------//
 
 function startTimer() {
-  let timeLeft = 30
-  let timer = setInterval(function() {
+   timer = setInterval(function() {
     progressBar.textContent = timeLeft + " seconds remaining!"
    timeLeft -= 1
    if (timeLeft < 0) {
@@ -105,6 +108,12 @@ function startTimer() {
 }, 1000)
 }
 
+function resetTimer() {
+  progressBar.textContent = ""
+  clearInterval(timer)
+  timeLeft = 30
+  timer = null
+}
 
 
 //-----------------------DISPLAYS-QUESTION----------------------//
@@ -154,6 +163,7 @@ progressBar.style.display = "none"
   renderResult()
   // check if there's a win
   checkGameStatus()
+  resetTimer()
 }
 
 // ---------------------RENDER-RESULT-OF-ANSWER-------------------//
