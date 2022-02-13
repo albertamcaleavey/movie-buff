@@ -4,7 +4,10 @@ import{questions, answers} from "../data/questions&answers.js"
 
 const winScore = 7500
 // half of possible points
-// to win, score must be greater than 7500
+
+const correctAudio = new Audio ("../audio/correct.wav")
+const incorrectAudio = new Audio ("../audio/incorrect.mp3")
+
 /*---------------------------- Variables (state) ----------------------------*/
 let game
 // checking if game is in progress, game over, or game won
@@ -101,7 +104,7 @@ function startTimer() {
    timeLeft -= 1
    if (timeLeft < 0) {
       progressBar.textContent = "Time's Up!"
-     // add buzzer sound
+     incorrectAudio.play()
      clearInterval(timer)
    }
    console.log(timeLeft)
@@ -142,9 +145,10 @@ let input = document.querySelector('.form-control').value.toLowerCase()
 if(input === answers[clickedIdx]){
     playerAns = "correct"
     score += parseInt(boxes[clickedIdx].textContent)
-    console.log(score)
+    // correctAudio.play()
   } else {
     playerAns= "incorrect"
+    // incorrectAudio.play()
     // call a render correct answer function??
   }
 
@@ -182,8 +186,10 @@ function renderResult() {
     // show score board with updated score if answer is right
     scoreboard.style.display = "inline"
     scoreboard.innerText = score
+    correctAudio.play()
   } else if (playerAns === "incorrect") {
     message.innerText = "Incorrect, pick again"
+    incorrectAudio.play()
   }
 }
 
