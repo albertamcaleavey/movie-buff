@@ -186,13 +186,32 @@ function renderResult() {
     // show score board with updated score if answer is right
     scoreboard.style.display = "inline"
     scoreboard.innerText = score
-    correctAudio.play()
+    playCorrectAudio()
   } else if (playerAns === "incorrect") {
     message.innerText = "Incorrect, pick again"
-    incorrectAudio.play()
+    playIncorrectAudio()
   }
 }
 
+//--------------------PLAY-AUDIO-W/-ADJUSTED-VOLUME---------------//
+
+function playCorrectAudio() {
+  correctAudio.load()
+  correctAudio.volume = .10
+  correctAudio.play()
+  setTimeout(function() {
+    correctAudio.pause()
+}, 1250)
+}
+
+function playIncorrectAudio() {
+  incorrectAudio.load()
+  incorrectAudio.volume = .10
+  incorrectAudio.play()
+  setTimeout(function() {
+    incorrectAudio.pause()
+  }, 450)
+}
 
 //-----------------------CHECK-STATUS-OF-GAME-----------------------//
   

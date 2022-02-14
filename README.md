@@ -15,4 +15,15 @@
 
 
 <!-- references
-https://jeopardyquestions.com -->
+questions:
+https://jeopardyquestions.com 
+
+audio:
+https://freesound.org/people/RICHERlandTV/sounds/216090/
+https://freesound.org/people/JohnsonBrandEditing/sounds/173932/
+https://freesound.org/people/VlatkoBlazek/sounds/192000/
+
+
+
+
+-->

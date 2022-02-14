@@ -48,6 +48,7 @@ h1 {
   margin: 0;
   padding: 0;
   place-self: center;
+  text-align: center;
 }
 
 #board {
