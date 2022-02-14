@@ -64,11 +64,21 @@ h1 {
   grid-row: 3;
   justify-self: stretch;
   align-self: stretch;
+  color: black;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 0px 5px 1px rgb(255, 255, 255);
+}
+
+.cat {
+  font-size: 18px;
 }
 
 .box, .cat {
   border: 1px black solid;
 }
+
+
 
 #scoreboard {
   grid-column: 1;
@@ -137,8 +147,8 @@ width: 100% !important;
   grid-row: 3;
   display: grid;
   grid-template-columns: 1fr 80% 1fr;
-  background-color: rgb(160, 81, 81);
-  display: none;
+  background-color: rgba(255, 255, 255, 0.952);
+  /* display: none; */
 }
 
 .question-card {
