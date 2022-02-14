@@ -145,10 +145,8 @@ let input = document.querySelector('.form-control').value.toLowerCase()
 if(input === answers[clickedIdx]){
     playerAns = "correct"
     score += parseInt(boxes[clickedIdx].textContent)
-    // correctAudio.play()
   } else {
     playerAns= "incorrect"
-    // incorrectAudio.play()
     // call a render correct answer function??
   }
 
