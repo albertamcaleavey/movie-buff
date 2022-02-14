@@ -90,7 +90,6 @@ function handleBoxClick(evt) {
   // turns the id into a number with parseInt
   clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
   renderQuestion()
-
   startTimer()
 
 }
@@ -105,9 +104,7 @@ function startTimer() {
       progressBar.textContent = "Time's Up!"
      incorrectAudio.play()
      clearInterval(timer)
-     progressBar.textContent = ""
-     card.style.display = "none"
-     form.style.display = "none"
+     checkAnswer()
    }
    console.log(timeLeft)
 }, 1000)

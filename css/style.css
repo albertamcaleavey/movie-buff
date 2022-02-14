@@ -67,11 +67,19 @@ h1 {
   border: 1px black solid;
 }
 
+#scoreboard {
+  grid-column: 1;
+  grid-row: 1;
+  height: 100px;
+  width: 120px;
+  justify-self: end;
+}
+
 #score {
-  grid-column: 2;
-  grid-row: 2;
-  align-self: start;
-  justify-self: start;
+  grid-column: 1;
+  grid-row: 1;
+  place-self: center;
+  color: black;
 }
 
 .btn-primary {
