@@ -19,6 +19,7 @@ html {
 
 body {
   background-color: gray;
+  background-image: image();
   /* Use a system font, if none are available use an available sans-sarif font */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -94,14 +95,21 @@ grid-row: 3;
 place-self: center; 
 width: 60%; 
 background-color: white;
+display: grid;
+grid-row: 100%;
+grid-template-columns: 60% 40%;
 }
 
 .form-control {
-display: inline-block;
+/* display: inline-block; */
+grid-column: 1;
+width: 100% !important;
 }
 
 .btn-outline-secondary {
-  display: inline-block;
+  /* display: inline-block; */
+  place-self: end;
+  grid-column: 2;
 }
 
 #timer {

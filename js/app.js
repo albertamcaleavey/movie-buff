@@ -10,7 +10,6 @@ const incorrectAudio = new Audio ("../audio/incorrect.mp3")
 
 /*---------------------------- Variables (state) ----------------------------*/
 let game
-// checking if game is in progress, game over, or game won
 let boardSpots = []
 let clickedIdx
 let playerAns
@@ -47,10 +46,10 @@ function init() {
   score = 0
   timeLeft = 30
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
-  card.style.display = "none"
-  form.style.display = "none"
-  progressBar.style.display = "none"
-  scoreboard.style.display = "none"
+  // card.style.display = "none"
+  // form.style.display = "none"
+  // progressBar.style.display = "none"
+  // scoreboard.style.display = "none"
   //assign prices to divs
   document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
   document.querySelectorAll(".four-hun").forEach((el) => el.innerText = "400")
