@@ -19,7 +19,7 @@ html {
 
 body {
   background-color: gray;
-  background-image: image();
+  background-image: url(stage.png);
   /* Use a system font, if none are available use an available sans-sarif font */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -118,7 +118,10 @@ width: 100% !important;
   place-self: end center;
   color: black;
   background-color: white;
+  background-image: url(css/marquee-clipart-7.gif);
 }
+
+
 
 
 
