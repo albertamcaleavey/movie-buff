@@ -106,6 +106,9 @@ function startTimer() {
       progressBar.textContent = "Time's Up!"
      incorrectAudio.play()
      clearInterval(timer)
+     progressBar.textContent = ""
+     card.style.display = "none"
+     form.style.display = "none"
    }
    console.log(timeLeft)
 }, 1000)
@@ -149,7 +152,7 @@ if(input === answers[clickedIdx]){
     playerAns= "incorrect"
     // call a render correct answer function??
   }
-
+  // make an option for when there is no response and timer runs out
 
   // SHOULD THIS GO IN A RENDER FUNCTION??
 // update the index of the board array 
