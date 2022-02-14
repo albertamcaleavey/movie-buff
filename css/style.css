@@ -129,6 +129,28 @@ width: 100% !important;
   background-image: url(css/marquee-clipart-7.gif);
 }
 
+#background {
+  grid-column: 2;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: 1fr 80% 1fr;
+  background-color: rgb(160, 81, 81);
+}
+
+.question-card {
+  background-image: url(film.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  grid-column: 2;
+  /* grid-row: 3; */
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 70% 25% 5%;
+  color: black;
+  /* background-color: white; */
+  place-items: center;
+}
 
 
 

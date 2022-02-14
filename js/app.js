@@ -46,10 +46,10 @@ function init() {
   score = 0
   timeLeft = 30
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
-  // card.style.display = "none"
-  // form.style.display = "none"
-  // progressBar.style.display = "none"
-  // scoreboard.style.display = "none"
+  card.style.display = "none"
+  form.style.display = "none"
+  progressBar.style.display = "none"
+  scoreboard.style.display = "none"
   //assign prices to divs
   document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
   document.querySelectorAll(".four-hun").forEach((el) => el.innerText = "400")
