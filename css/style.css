@@ -19,7 +19,10 @@ html {
 
 body {
   background-color: gray;
-  background-image: url(stage.png);
+  background-image: url(theater.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   /* Use a system font, if none are available use an available sans-sarif font */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -135,6 +138,7 @@ width: 100% !important;
   display: grid;
   grid-template-columns: 1fr 80% 1fr;
   background-color: rgb(160, 81, 81);
+  display: none;
 }
 
 .question-card {

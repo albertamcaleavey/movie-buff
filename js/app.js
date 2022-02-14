@@ -198,7 +198,7 @@ function playCorrectAudio() {
   correctAudio.play()
   setTimeout(function() {
     correctAudio.pause()
-}, 1250)
+}, 1300)
 }
 
 function playIncorrectAudio() {
