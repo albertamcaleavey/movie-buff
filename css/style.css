@@ -19,7 +19,7 @@ html {
 
 body {
   background-color: gray;
-  background-image: url(theater.png);
+  background-image: url(movie-theater.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -34,7 +34,7 @@ body {
   font-weight: bold;
   min-height: 100vh;
   /* mobile first - single column */
-  grid-template-columns: 1fr 70% 1fr;
+  grid-template-columns: 1fr 60% 1fr;
   grid-template-rows: 15% 10% auto 15%;
 }
 
@@ -59,15 +59,15 @@ h1 {
   display: grid;
   grid-template-columns: repeat(5, 20%);
   grid-template-rows: repeat(6, auto);
-  border: 1px black solid;
+  border: 1px rgb(0, 0, 0) solid;
   grid-column: 2;
   grid-row: 3;
-  justify-self: stretch;
-  align-self: stretch;
-  color: black;
+  /* justify-self: stretch;
+  align-self: stretch; */
+  color: rgb(0, 0, 0);
   text-align: center;
-  background-color: white;
-  box-shadow: 0px 0px 5px 1px rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.103);
+  box-shadow: 0px 0px 8px 1px rgb(255, 255, 255);
 }
 
 .cat {
@@ -75,10 +75,8 @@ h1 {
 }
 
 .box, .cat {
-  border: 1px black solid;
+  border: 1px rgb(0, 0, 0) solid;
 }
-
-
 
 #scoreboard {
   grid-column: 1;
@@ -110,64 +108,74 @@ h1 {
   display: grid;
 }
 
-.input-group {
-grid-column: 2;
-grid-row: 3;
-place-self: center; 
-width: 60%; 
-background-color: white;
-display: grid;
-grid-row: 100%;
-grid-template-columns: 60% 40%;
-}
 
-.form-control {
-/* display: inline-block; */
-grid-column: 1;
-width: 100% !important;
-}
 
-.btn-outline-secondary {
-  /* display: inline-block; */
-  place-self: end;
-  grid-column: 2;
-}
 
-#timer {
-  grid-column: 2;
-  grid-row: 3;
-  place-self: end center;
-  color: black;
-  background-color: white;
-  background-image: url(css/marquee-clipart-7.gif);
-}
-
-#background {
+.background {
   grid-column: 2;
   grid-row: 3;
   display: grid;
-  grid-template-columns: 1fr 80% 1fr;
-  background-color: rgba(255, 255, 255, 0.952);
+  grid-template-columns: 100%;
+  grid-template-rows: 70% 20% 10%;
+  color: black;
+  background-color: white;
+  place-items: center;
   /* display: none; */
 }
 
-.question-card {
+#film {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  place-self: stretch;
+}
+
+/* .question-card {
   background-image: url(film.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   grid-column: 2;
-  /* grid-row: 3; */
+  grid-row: 1;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 70% 25% 5%;
+  grid-template-rows: 70% 20% 10%;
   color: black;
-  /* background-color: white; */
+  background-color: white;
   place-items: center;
+}  */
+
+#question {
+  grid-column: 1;
+  grid-row: 1;
 }
 
+#submit {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: end;
+  align-self: center;
+  margin-right: 75px;
+  width: 15%;
+  height: 40%;
+}
 
+.input {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  align-self: center;
+  margin-left: 75px;
+  width: 48%;
+  height: 40%;
+}
 
+#timer {
+  grid-column: 1;
+  grid-row: 3;
+  /* place-self: end center; */
+  color: black;
+  /* background-color: white; */
+}
 
 
 

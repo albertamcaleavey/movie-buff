@@ -22,18 +22,22 @@ let boxes = document.querySelectorAll('.box')
 let board = document.getElementById('board')
 // having boxes and board may be repetitive 
 let message = document.getElementById('message')
-let card = document.querySelector('.card')
-let form = document.querySelector(".input-group")
-let submitAns = document.getElementById("button-addon2")
+
+
+// let submitAns = document.getElementById("submit")
+
 let replayBtn = document.querySelector(".btn-primary")
 let scoreboard = document.getElementById("score")
-let progressBar = document.getElementById("timer")
 
+// GROUP THESE??
+let card = document.querySelector(".background")
+let progressBar = document.getElementById("timer")
+let form = document.querySelector(".input")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 board.addEventListener("click", handleBoxClick)
-submitAns.addEventListener("click", checkAnswer)
+document.getElementById("submit").addEventListener("click", checkAnswer)
 replayBtn.addEventListener("click", init)
 
 /*-------------------------------- Functions --------------------------------*/
@@ -46,9 +50,11 @@ function init() {
   score = 0
   timeLeft = 30
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
-  card.style.display = "none"
-  form.style.display = "none"
-  progressBar.style.display = "none"
+
+  // card.style.display = "none"
+  // form.style.display = "none"
+  // progressBar.style.display = "none"
+
   scoreboard.style.display = "none"
   //assign prices to divs
   document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
@@ -101,7 +107,9 @@ function startTimer() {
     progressBar.textContent = timeLeft + " seconds remaining!"
    timeLeft -= 1
    if (timeLeft < 0) {
+
       progressBar.textContent = "Time's Up!"
+
      incorrectAudio.play()
      clearInterval(timer)
      checkAnswer()
@@ -124,7 +132,7 @@ function renderQuestion() {
   // find the corresponding question
   let currentQuestion = questions[clickedIdx]
   // set the current question text to the card
-  card.innerText = currentQuestion
+  document.getElementById("question").innerText = currentQuestion
   // show the card- should this go in render?
   card.style.display = "inline"
   // show the input form
@@ -139,7 +147,7 @@ function renderQuestion() {
 // change name to check answer??
 function checkAnswer() {
 // get the user input and makes it all lowercase
-let input = document.querySelector('.form-control').value.toLowerCase()
+let input = document.querySelector('.input').value.toLowerCase()
 // checks if input is correct: updates playerAns variable and score
 if(input === answers[clickedIdx]){
     playerAns = "correct"
@@ -154,13 +162,15 @@ if(input === answers[clickedIdx]){
 // update the index of the board array 
 boardSpots[clickedIdx] = ""
 // clear input field 
-document.querySelector('.form-control').value = ""
+document.querySelector('.input').value = ""
+
 // hide question card
 card.style.display = "none"
 // hide input form
 form.style.display = "none"
 // hide timer/ progress bar
 progressBar.style.display = "none"
+
   renderResult()
   // check if there's a win
   checkGameStatus()
@@ -236,8 +246,6 @@ function checkWin() {
   render()
 }
 
-
-//------------------------------TIMER------------------------------//
 
 
 
