@@ -32,7 +32,7 @@ let scoreboard = document.getElementById("score")
 // GROUP THESE??
 let card = document.querySelector(".background")
 let progressBar = document.getElementById("timer")
-let form = document.querySelector(".input")
+// let form = document.querySelector(".input")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -51,7 +51,7 @@ function init() {
   timeLeft = 30
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
 
-  // card.style.display = "none"
+  card.style.display = "none"
   // form.style.display = "none"
   // progressBar.style.display = "none"
 
@@ -134,11 +134,11 @@ function renderQuestion() {
   // set the current question text to the card
   document.getElementById("question").innerText = currentQuestion
   // show the card- should this go in render?
-  card.style.display = "inline"
+  card.style.display = "grid"
   // show the input form
-  form.style.display = "inline"
+  // form.style.display = "grid"
   // show timer
-  progressBar.style.display = "inline"
+  // progressBar.style.display = "grid"
 }
 
 
@@ -167,9 +167,9 @@ document.querySelector('.input').value = ""
 // hide question card
 card.style.display = "none"
 // hide input form
-form.style.display = "none"
+// form.style.display = "none"
 // hide timer/ progress bar
-progressBar.style.display = "none"
+// progressBar.style.display = "none"
 
   renderResult()
   // check if there's a win
