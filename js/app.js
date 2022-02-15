@@ -22,16 +22,15 @@ let boxes = document.querySelectorAll('.box')
 let board = document.getElementById('board')
 // having boxes and board may be repetitive 
 let message = document.getElementById('message')
+let progressBar = document.querySelector('.progress')
 
-
-// let submitAns = document.getElementById("submit")
 
 let replayBtn = document.querySelector(".btn-primary")
 let scoreboard = document.getElementById("score")
 
 // GROUP THESE??
 let card = document.querySelector(".background")
-let progressBar = document.getElementById("timer")
+let timerEl = document.getElementById("timer")
 // let form = document.querySelector(".input")
 
 
@@ -104,11 +103,11 @@ function handleBoxClick(evt) {
 
 function startTimer() {
    timer = setInterval(function() {
-    progressBar.textContent = timeLeft + " seconds remaining!"
+    timerEl.textContent = timeLeft + " seconds remaining!"
    timeLeft -= 1
    if (timeLeft < 0) {
 
-      progressBar.textContent = "Time's Up!"
+      timerEl.textContent = "Time's Up!"
 
      incorrectAudio.play()
      clearInterval(timer)
@@ -119,7 +118,7 @@ function startTimer() {
 }
 
 function resetTimer() {
-  progressBar.textContent = ""
+  timerEl.textContent = ""
   clearInterval(timer)
   timeLeft = 30
   timer = null
