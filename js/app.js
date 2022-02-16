@@ -71,7 +71,9 @@ function render() {
     message.innerText = "Game Over, you lost. Click the replay button to try again!"
   } else if (game === "win") {
     message.innerText = "You won!"
-  }
+    confetti.start()
+    setTimeout (() => {confetti.stop()},30000)
+}
 }
 
 
