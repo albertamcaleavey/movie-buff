@@ -44,6 +44,7 @@ function init() {
   score = 0
   timer = null
   timeLeft = 30
+  resetTimer()
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
   // hide question card, progress bar and scoreboard
   questionCard.style.display = "none"
@@ -104,7 +105,7 @@ function startTimer() {
   timeLeft -= 1
   // adjusts the width of progress bar to time left
   progress.style =`width: ${timeLeft/30 *100}%`
-  progress.innerText = timeLeft
+  // progress.innerText = timeLeft
 
   if (timeLeft < 0) {
     incorrectAudio.play()
