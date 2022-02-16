@@ -77,6 +77,9 @@ h1 {
   margin: 24px;
 }
 
+.btn-primary {
+  font-size: 15px;
+}
 #marquee {
   grid-column-start: 2;
   grid-row: 3;
@@ -96,10 +99,11 @@ h1 {
 
 #scoreboard {
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 2;
   height: 100px;
-  width: 120px;
-  justify-self: end;
+  width: 100px;
+  place-self: end center;
+  margin-bottom: 15px;
 }
 
 #score {
@@ -155,21 +159,28 @@ h1 {
   grid-column: 1;
   grid-row: 2;
   justify-self: end;
-  align-self: center;
-  margin-right: 75px;
-  width: 15%;
+  margin-right: 120px;
   height: 40%;
+  border: 1px;
+  
 }
 
-.input {
+#input {
   grid-column: 1;
   grid-row: 2;
-  justify-self: start;
-  align-self: center;
+  /* justify-self: start;
+  align-self: center; */
   margin-left: 75px;
   width: 48%;
   height: 40%;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
 }
+
+/* input:focus {
+  outline: none;
+} */
 
 #timer {
   grid-column: 1;
