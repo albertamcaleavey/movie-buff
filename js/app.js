@@ -103,22 +103,22 @@ function handleBoxClick(evt) {
 // may need to init timeleft to zero
 function startTimer() {
   let progress = document.querySelector(".progress-bar")
-   timer = setInterval(function() {
-    timerEl.textContent = timeLeft + " seconds remaining!"
-   timeLeft -= 1
+  timer = setInterval(function() {
+  timerEl.textContent = timeLeft + " seconds remaining!"
+  timeLeft -= 1
   //  let timePassed = 30 - timeLeft
-   progress.style =`width: ${timeLeft/30 *100}%`
-   if (timeLeft < 0) {
+  progress.style =`width: ${timeLeft/30 *100}%`
+  progress.innerText = timeLeft
 
-      timerEl.textContent = "Time's Up!"
-
-     incorrectAudio.play()
-     clearInterval(timer)
-     checkAnswer()
-   }
-   console.log(timeLeft)
-}, 1000)
-}
+  if (timeLeft < 0) {
+    timerEl.textContent = "Time's Up!" 
+    incorrectAudio.play()
+    clearInterval(timer)
+    checkAnswer()
+  }
+  console.log(timeLeft)
+  }, 1000)
+  }
 
 function resetTimer() {
   timerEl.textContent = ""
@@ -149,9 +149,9 @@ function renderQuestion() {
 
 // change name to check answer??
 function checkAnswer() {
-// get the user input and makes it all lowercase
-let input = document.querySelector('.input').value.toLowerCase()
-// checks if input is correct: updates playerAns variable and score
+  // get the user input and makes it all lowercase
+  let input = document.querySelector('.input').value.toLowerCase()
+  // checks if input is correct: updates playerAns variable and score
 if(input === answers[clickedIdx]){
     playerAns = "correct"
     score += parseInt(boxes[clickedIdx].textContent)
