@@ -52,7 +52,7 @@ function init() {
 
   card.style.display = "none"
   // form.style.display = "none"
-  // progressBar.style.display = "none"
+  progressBar.style.display = "none"
 
   scoreboard.style.display = "none"
   //assign prices to divs
@@ -100,11 +100,14 @@ function handleBoxClick(evt) {
 }
 
 // ---------------------------TIMER----------------------------//
-
+// may need to init timeleft to zero
 function startTimer() {
+  let progress = document.querySelector(".progress-bar")
    timer = setInterval(function() {
     timerEl.textContent = timeLeft + " seconds remaining!"
    timeLeft -= 1
+  //  let timePassed = 30 - timeLeft
+   progress.style =`width: ${timeLeft/30 *100}%`
    if (timeLeft < 0) {
 
       timerEl.textContent = "Time's Up!"
@@ -119,6 +122,7 @@ function startTimer() {
 
 function resetTimer() {
   timerEl.textContent = ""
+  // progressBar.style =`width: 0%`
   clearInterval(timer)
   timeLeft = 30
   timer = null
@@ -137,7 +141,7 @@ function renderQuestion() {
   // show the input form
   // form.style.display = "grid"
   // show timer
-  // progressBar.style.display = "grid"
+  progressBar.style.display = "grid"
 }
 
 
@@ -168,7 +172,7 @@ card.style.display = "none"
 // hide input form
 // form.style.display = "none"
 // hide timer/ progress bar
-// progressBar.style.display = "none"
+progressBar.style.display = "none"
 
   renderResult()
   // check if there's a win
