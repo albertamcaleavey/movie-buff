@@ -46,9 +46,9 @@ h1 {
   padding: 0;
   place-self: center;
   font-family: 'Limelight', cursive;
-  font-size: 85px;
-  text-shadow: 0px 0px 10px rgb(255, 228, 107);
-  color: rgb(255, 237, 137);
+  font-size: 95px;
+  text-shadow: 1px 1px 50px rgb(255, 228, 107);
+  color: rgb(255, 228, 107);
 }
 
 #message {
@@ -102,13 +102,14 @@ h1 {
   width: 100px;
   place-self: end center;
   margin-bottom: 31px;
+  color: gold rgb(182, 182, 182) rgb(211, 0, 0) rgb(75, 0, 0) rgb(26, 26, 26);
 }
 
 #score {
   grid-column: 1;
   grid-row: 1;
   align-self: end;
-  padding-left: 78px;
+  padding-left: 100px;
   color: black;
 }
 
@@ -136,7 +137,6 @@ h1 {
   color: black;
   background-color: white;
   place-items: center;
-  /* display: none; */
 }
 
 #film {
@@ -160,25 +160,13 @@ h1 {
   width: 8%;
   justify-self: end;
   margin-bottom: 36px;
-  margin-right: 140px;
+  margin-right: 168px;
 }
-
-/* #submit {
-  grid-column: 1;
-  grid-row: 2;
-  justify-self: end;
-  margin-right: 120px;
-  height: 40%;
-  border: 1px;
-  margin-bottom: 30px;
-  border-radius: 50%;
-} */
 
 #input {
   grid-column: 1;
   grid-row: 2;
-  /* justify-self: start;
-  align-self: center; */
+
   margin-bottom: 30px;
   width: 48%;
   height: 40%;
@@ -186,8 +174,6 @@ h1 {
   border-bottom: 2px solid black;
   outline: none;
 }
-
-
 
 #timer {
   grid-column: 1;

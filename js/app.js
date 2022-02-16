@@ -176,6 +176,8 @@ function renderResult() {
          boxes[idx].innerText = ""
     } 
   })
+  // hides category name if all items in that category are empty
+  // if(boardSpots[0] !== null && boardSpots[0] && )
   // renders message for right or wrong answer 
   if(playerAns === "correct") {
     message.innerText = "Correct! Pick again"
