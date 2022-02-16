@@ -103,13 +103,14 @@ h1 {
   height: 100px;
   width: 100px;
   place-self: end center;
-  margin-bottom: 15px;
+  margin-bottom: 31px;
 }
 
 #score {
   grid-column: 1;
   grid-row: 1;
-  place-self: center;
+  align-self: end;
+  padding-left: 78px;
   color: black;
 }
 

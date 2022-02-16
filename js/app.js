@@ -178,7 +178,7 @@ function renderResult() {
     message.innerText = "Correct! Pick again"
     // show score board with updated score if answer is right
     scoreboard.style.display = "inline"
-    scoreboard.innerText = score
+    document.getElementById('score').innerText = score
     playCorrectAudio()
   } else if (playerAns === "incorrect") {
     message.innerText = "Incorrect, pick again"
