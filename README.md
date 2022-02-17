@@ -1,29 +1,36 @@
-<!-- - **A `README.md` file** with these sections:
-    - **<Your game’s title>**: A description of your game. Background info about why you chose the game is a nice touch.
-  
-    - **Getting Started**: Include a link to your deployed game and any instructions you deem important.
-
-
-    - **Screenshot(s):** Images of your actual game.
-
-
-    - **Technologies Used**: List of the technologies used, for example: JavaScript, HTML, CSS, etc.
-
-
-    - **Next Steps**: Planned future enhancements (icebox items). -->
-
 
 
 <!-- references
-questions:
-https://jeopardyquestions.com 
 
 audio:
 https://freesound.org/people/RICHERlandTV/sounds/216090/
 https://freesound.org/people/JohnsonBrandEditing/sounds/173932/
 https://freesound.org/people/VlatkoBlazek/sounds/192000/
 
-
-
-
 -->
+
+# Movie Buff
+Movie Buff is a movie-themed quiz game inspired by Jeopardy! 
+
+## Getting Started  
+Click [here](https://movie-buff-unit-1-project.surge.sh/) to play.  
+
+### Instructions
+Select a question. Answer more than half of them right, earning over 7500 points, to win.  
+
+## Screenshots of game 
+![starting game screen](link)
+![when question is rendered](link)
+
+## Technologies Used  
+- JavaScript
+- HTML
+- CSS  
+
+## Credits  
+Some questions were found at [jeopardyquestions.com](https://jeopardyquestions.com/).
+
+## Next Steps  
+- add a multi-player option
+- add responsive design
+- refresh the board with new questions when a new game starts 

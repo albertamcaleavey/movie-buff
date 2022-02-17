@@ -47,6 +47,8 @@ function init() {
   timeLeft = null
   resetTimer()
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
+  // ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+  
   initialRender()
 } 
 
@@ -70,10 +72,15 @@ function initialRender() {
 
 // ----------------------UPDATE-GAME-BOARD-----------------------//
 
+// function renderCorrectAns() {
+//   questionCard.style.innerText = "The correct answer is: ${answers[clickedIdx]}"
+// }
+
 function renderUpdate() {
   // updates board
   input.value = ""
-  questionCard.style.display = "none"
+  setTimeout (() => {questionCard.style.display = "none"},5000)
+  
   progressBar.style.display = "none"
   boardSpots[clickedIdx] = ""
   // updates the board to display which boxes have already been picked 
@@ -182,19 +189,11 @@ function checkAnswer() {
     playerAns= "incorrect"
     // create and call a render correct answer function??
   }
-
-  // // SHOULD THIS GO IN ANOTHER RENDER FUNCTION??
-  // // update the index of the board array 
-  // boardSpots[clickedIdx] = ""
-  // // clear input field 
-  // input.value = ""
-  // // hide question card
-  // questionCard.style.display = "none"
-  // // hide progress bar
-  // progressBar.style.display = "none"
+  // update game board
   renderUpdate()
+  // update render message
   renderResult()
-  // // check if there's a win
+  // check for a win/loss
   checkGameStatus()
   resetTimer()
 }
@@ -215,9 +214,12 @@ function renderResult() {
     scoreEl.innerText = score
     playCorrectAudio()
   } if (playerAns === "incorrect") {
+    // show correct answer
+    document.getElementById("question").innerText = `"The correct answer is: "${answers[clickedIdx]}`
     message.innerText = "Incorrect, pick again"
     message.classList.add("animate__animated", "animate__headShake")
     playIncorrectAudio()
+    
   }
 }
 
