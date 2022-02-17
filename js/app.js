@@ -23,7 +23,7 @@ let board = document.getElementById('board')
 // change event listener to listen for boxes instead of board
 let message = document.getElementById('message')
 let progressBar = document.querySelector('.progress')
-let replayBtn = document.querySelector(".btn-primary")
+let replay = document.querySelector(".btn-primary")
 let scoreboard = document.getElementById("scoreboard")
 let scoreEl = document.getElementById('score')
 let questionCard = document.querySelector(".background")
@@ -33,7 +33,7 @@ let progress = document.querySelector(".progress-bar")
 /*----------------------------- Event Listeners -----------------------------*/
 board.addEventListener("click", handleBoxClick)
 document.getElementById("submit").addEventListener("click", checkAnswer)
-replayBtn.addEventListener("click", init)
+replay.addEventListener("click", init)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -47,31 +47,40 @@ function init() {
   timeLeft = null
   resetTimer()
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
+  initialRender()
+} 
+
+//-------------------DISPLAY-INITIAL-GAME-STATE-------------------//
+function initialRender() {
   // hide question card, progress bar and scoreboard
   questionCard.style.display = "none"
   progressBar.style.display = "none"
   scoreboard.style.display = "none"
   scoreEl.style.display = "none"
+  replay.style.display = "none"
   // display box prices 
   document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
   document.querySelectorAll(".four-hun").forEach((el) => el.innerText = "400")
   document.querySelectorAll(".six-hun").forEach((el) => el.innerText = "600")
   document.querySelectorAll(".eight-hun").forEach((el) => el.innerText = "800")
   document.querySelectorAll(".thous").forEach((el) => el.innerText = "1000")
-  render()
+  // display instructions
+  message.innerText = "Select a question. If you earn over 7500 points, you win!"
 }
 
-// ----------------------RENDER-GAME-STATUS-----------------------//
+// ----------------------UPDATE-GAME-BOARD-----------------------//
 
-  // displays prices on boxes
-  // displays instructions
-
-function render() {
-   // updates the board to display which boxes have already been picked 
-   boardSpots.forEach(function(spot, idx){
+function renderUpdate() {
+  // updates board
+  input.value = ""
+  questionCard.style.display = "none"
+  progressBar.style.display = "none"
+  boardSpots[clickedIdx] = ""
+  // updates the board to display which boxes have already been picked 
+  boardSpots.forEach(function(spot, idx){
     if(spot !== null) {
-         boxes[idx].innerText = ""
-         boxes[idx].classList.remove('hover')
+      boxes[idx].innerText = ""
+      boxes[idx].classList.remove('hover')
     } 
   })
   // hides category name when category is empty 
@@ -90,19 +99,16 @@ function render() {
   if(boardSpots[4] !==null && boardSpots[9]!==null && boardSpots[14]!==null && boardSpots[19] !==null && boardSpots[24]!==null){
     document.getElementById('cat4').textContent = ""
   }
-
-
-
-  if(game === null){
-    message.innerText = "Select a question. If you earn over 7500 points, you win!"
-  } else if (game === "loss") {
+  // updates render message based on win/loss
+  if (game === "loss") {
     message.innerText = "Game Over, you lost. Click the replay button to try again!"
   } else if (game === "win") {
     message.innerText = "You won!"
     confetti.start()
     setTimeout (() => {confetti.stop()},30000)
+  }
 }
-}
+
 
 
 //---------------------WHEN-BOX-IS-CLICKED----------------------//
@@ -124,16 +130,10 @@ function handleBoxClick(evt) {
 // ---------------------------TIMER----------------------------//
 
 function startTimer() {
-  // create cached element reference for progress bar
-  
   timer = setInterval(function() {
-  // decreases time by one second
   timeLeft -= 1
-  
   // adjusts the width of progress bar to time left
   progress.style =`width: ${timeLeft/30 *100}%`
-  // progress.innerText = timeLeft
-
   if (timeLeft < 0) {
     incorrectAudio.play()
     clearInterval(timer)
@@ -164,6 +164,8 @@ function renderQuestionCard() {
   questionCard.style.display = "grid"
   // display timer
   progressBar.style.display = "grid"
+  // display replay button
+  replay.style.display = "grid"
 }
 
 
@@ -181,23 +183,23 @@ function checkAnswer() {
     // create and call a render correct answer function??
   }
 
-  // SHOULD THIS GO IN ANOTHER RENDER FUNCTION??
-  // update the index of the board array 
-  boardSpots[clickedIdx] = ""
-  // clear input field 
-  input.value = ""
-  // hide question card
-  questionCard.style.display = "none"
-  // hide progress bar
-  progressBar.style.display = "none"
-  render()
+  // // SHOULD THIS GO IN ANOTHER RENDER FUNCTION??
+  // // update the index of the board array 
+  // boardSpots[clickedIdx] = ""
+  // // clear input field 
+  // input.value = ""
+  // // hide question card
+  // questionCard.style.display = "none"
+  // // hide progress bar
+  // progressBar.style.display = "none"
+  renderUpdate()
   renderResult()
-  // check if there's a win
+  // // check if there's a win
   checkGameStatus()
   resetTimer()
 }
 
-// ---------------------RENDER-RESULT-OF-ANSWER-------------------//
+// -----------UPDATE-RENDER-MSG- W/-RESULT-OF-ANSWER-------------//
 
 
 function renderResult() {
@@ -260,7 +262,7 @@ function checkWin() {
   } else if (score < winScore) {
     game = "loss"
   }
-  render()
+  renderUpdate()
 }
 
 
