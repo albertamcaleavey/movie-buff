@@ -27,6 +27,7 @@ let replay = document.querySelector(".btn-primary")
 let scoreboard = document.getElementById("scoreboard")
 let scoreEl = document.getElementById('score')
 let questionCard = document.querySelector(".background")
+let cardText = document.getElementById("question")
 let input = document.getElementById('input')
 
 let progress = document.querySelector(".progress-bar")
@@ -55,8 +56,7 @@ function init() {
 //-------------------DISPLAY-INITIAL-GAME-STATE-------------------//
 function initialRender() {
   // hide question card, progress bar and scoreboard
-  questionCard.style.display = "none"
-  progressBar.style.display = "none"
+  hideQuestionCard()
   scoreboard.style.display = "none"
   scoreEl.style.display = "none"
   replay.style.display = "none"
@@ -70,18 +70,18 @@ function initialRender() {
   message.innerText = "Select a question. If you earn over 7500 points, you win!"
 }
 
-// ----------------------UPDATE-GAME-BOARD-----------------------//
+//-------------------------------HIDE-QUESTION-CARD---------------------------------//
 
-// function renderCorrectAns() {
-//   questionCard.style.innerText = "The correct answer is: ${answers[clickedIdx]}"
-// }
+function hideQuestionCard() {
+  questionCard.style.display = "none"
+  progressBar.style.display = "none"
+}
+
+// ----------------------UPDATE-GAME-BOARD-----------------------//
 
 function renderUpdate() {
   // updates board
   input.value = ""
-  setTimeout (() => {questionCard.style.display = "none"},5000)
-  
-  progressBar.style.display = "none"
   boardSpots[clickedIdx] = ""
   // updates the board to display which boxes have already been picked 
   boardSpots.forEach(function(spot, idx){
@@ -109,10 +109,14 @@ function renderUpdate() {
   // updates render message based on win/loss
   if (game === "loss") {
     message.innerText = "Game Over, you lost. Click the replay button to try again!"
+    // display replay button
+    replay.style.display = "grid"
   } else if (game === "win") {
     message.innerText = "You won!"
     confetti.start()
     setTimeout (() => {confetti.stop()},30000)
+    // display replay button
+    replay.style.display = "grid"
   }
 }
 
@@ -159,6 +163,8 @@ function resetTimer() {
 //-----------------------DISPLAYS-QUESTION----------------------//
 
 function renderQuestionCard() {
+  // hide replay button
+  replay.style.display = "none"
   // reset progress bar
   progress.style =`width: 100%`
   // hide render message
@@ -166,13 +172,11 @@ function renderQuestionCard() {
   // find the corresponding question
   let currentQuestion = questions[clickedIdx]
   // set the current question text to the card
-  document.getElementById("question").innerText = currentQuestion
+  cardText.innerText = currentQuestion
   // display question card
   questionCard.style.display = "grid"
   // display timer
   progressBar.style.display = "grid"
-  // display replay button
-  replay.style.display = "grid"
 }
 
 
@@ -204,22 +208,24 @@ function checkAnswer() {
 function renderResult() {
   // renders message for right or wrong answer 
   message.style.display = "grid"
-  message.classList.remove("animate__animated", "animate__headShake")
+  message.classList.remove("animate__animated", "animate__shakeX", "animate__animated", "animate__heartBeat")
   if(playerAns === "correct") {
+    hideQuestionCard()
     message.innerText = "Correct! Pick again"
-    message.classList.add("animate__animated", "animate__pulse")
+    message.classList.add("animate__animated", "animate__heartBeat")
     // show score board with updated score if answer is right
     scoreboard.style.display = "grid"
     scoreEl.style.display = "grid"
     scoreEl.innerText = score
     playCorrectAudio()
   } if (playerAns === "incorrect") {
+    // delays hiding of question card
+  setTimeout (() => {hideQuestionCard()},2000)
     // show correct answer
-    document.getElementById("question").innerText = `"The correct answer is: "${answers[clickedIdx]}`
+    cardText.innerText = `The correct answer is ${answers[clickedIdx]}`
     message.innerText = "Incorrect, pick again"
     message.classList.add("animate__animated", "animate__headShake")
     playIncorrectAudio()
-    
   }
 }
 

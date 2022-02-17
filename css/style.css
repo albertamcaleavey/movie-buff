@@ -82,20 +82,40 @@ h1 {
 
 .box {
   border: 1px rgb(230, 230, 230) solid;
-  font-size: 30px;
+  font-size: 36px;
 }
 
 .hover:hover {
   background-color: rgb(243, 239, 234);
 }
 
-#light {
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row: 1 / 5;
-  justify-self: center;
-  align-self: start;
-  
+#light-left {
+  grid-column: 1 / 4;
+  grid-row: 1 / 6 ;
+  place-self: start;
+  display: none;
+}
+
+#light-right {
+  grid-column: 4 / 1;
+  grid-row: 1 / 6 ;
+  place-self: end;
+  display: none;
+}
+
+#light-bottom-left {
+  grid-column: 1;
+  grid-row: 4 ;
+  justify-self: start;
+  align-self: end;
+  display: none;
+}
+
+#light-bottom-right {
+  grid-column: 4 / 1;
+  grid-row: 6 / 1 ;
+  place-self: end;
+  display: none;
 }
 
 #scoreboard {
@@ -106,13 +126,14 @@ h1 {
   place-self: end center;
   margin-bottom: 31px;
   color: gold rgb(182, 182, 182) rgb(211, 0, 0) rgb(75, 0, 0) rgb(26, 26, 26);
+  display: none;
 }
 
 #score {
   grid-column: 1;
   grid-row: 1;
   align-self: end;
-  padding-left: 100px;
+  padding-left: 96px;
   color: black;
 }
 
