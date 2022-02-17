@@ -25,6 +25,7 @@ let message = document.getElementById('message')
 let progressBar = document.querySelector('.progress')
 let replayBtn = document.querySelector(".btn-primary")
 let scoreboard = document.getElementById("scoreboard")
+let scoreEl = document.getElementById('score')
 let questionCard = document.querySelector(".background")
 let input = document.getElementById('input')
 
@@ -43,13 +44,14 @@ function init() {
   playerAns = null
   score = 0
   timer = null
-  timeLeft = 30
+  timeLeft = null
   resetTimer()
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
   // hide question card, progress bar and scoreboard
   questionCard.style.display = "none"
   progressBar.style.display = "none"
   scoreboard.style.display = "none"
+  scoreEl.style.display = "none"
   // display box prices 
   document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
   document.querySelectorAll(".four-hun").forEach((el) => el.innerText = "400")
@@ -92,7 +94,6 @@ function handleBoxClick(evt) {
   clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
   renderQuestionCard()
   startTimer()
-
 }
 
 // ---------------------------TIMER----------------------------//
@@ -125,6 +126,8 @@ function resetTimer() {
 //-----------------------DISPLAYS-QUESTION----------------------//
 
 function renderQuestionCard() {
+  // hide render message
+  message.style.display = "none"
   // find the corresponding question
   let currentQuestion = questions[clickedIdx]
   // set the current question text to the card
@@ -155,7 +158,6 @@ function checkAnswer() {
   boardSpots[clickedIdx] = ""
   // clear input field 
   input.value = ""
-
   // hide question card
   questionCard.style.display = "none"
   // hide progress bar
@@ -178,15 +180,21 @@ function renderResult() {
   })
   // hides category name if all items in that category are empty
   // if(boardSpots[0] !== null && boardSpots[0] && )
+
   // renders message for right or wrong answer 
+  message.style.display = "grid"
+  message.classList.remove("animate__animated", "animate__headShake")
   if(playerAns === "correct") {
     message.innerText = "Correct! Pick again"
+    message.classList.add("animate__animated", "animate__pulse")
     // show score board with updated score if answer is right
-    scoreboard.style.display = "inline"
-    document.getElementById('score').innerText = score
+    scoreboard.style.display = "grid"
+    scoreEl.style.display = "grid"
+    scoreEl.innerText = score
     playCorrectAudio()
-  } else if (playerAns === "incorrect") {
+  } if (playerAns === "incorrect") {
     message.innerText = "Incorrect, pick again"
+    message.classList.add("animate__animated", "animate__headShake")
     playIncorrectAudio()
   }
 }

@@ -95,6 +95,10 @@ h1 {
   font-size: 30px;
 }
 
+.box:hover {
+  background-color: rgb(243, 239, 234);
+}
+
 #scoreboard {
   grid-column: 1;
   grid-row: 2;
