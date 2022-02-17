@@ -18,9 +18,10 @@ Click [here](https://movie-buff-unit-1-project.surge.sh/) to play.
 ### Instructions
 Select a question. Answer more than half of them right, earning over 7500 points, to win.  
  
-### Wireframe:
+Wireframe:
 ![wireframe](assets/movie-buff-wireframe.png)  
-### Starting game screen:
+ 
+Starting game screen:
 ![starting game screen](assets/starting-game-screen.png)
 
 ## Technologies Used  
