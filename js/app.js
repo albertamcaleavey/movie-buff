@@ -29,7 +29,7 @@ let scoreEl = document.getElementById('score')
 let questionCard = document.querySelector(".background")
 let input = document.getElementById('input')
 
-
+let progress = document.querySelector(".progress-bar")
 /*----------------------------- Event Listeners -----------------------------*/
 board.addEventListener("click", handleBoxClick)
 document.getElementById("submit").addEventListener("click", checkAnswer)
@@ -67,7 +67,32 @@ function init() {
   // displays instructions
 
 function render() {
-  // displays message based on status of game
+   // updates the board to display which boxes have already been picked 
+   boardSpots.forEach(function(spot, idx){
+    if(spot !== null) {
+         boxes[idx].innerText = ""
+         boxes[idx].classList.remove('hover')
+    } 
+  })
+  // hides category name when category is empty 
+  if(boardSpots[0] !==null && boardSpots[5]!==null && boardSpots[10]!==null && boardSpots[15] !==null && boardSpots[20]!==null){
+    document.getElementById('cat0').textContent = ""
+  }
+  if(boardSpots[1] !==null && boardSpots[6]!==null && boardSpots[11]!==null && boardSpots[16] !==null && boardSpots[21]!==null){
+    document.getElementById('cat1').textContent = ""
+  }
+  if(boardSpots[2] !==null && boardSpots[7]!==null && boardSpots[12]!==null && boardSpots[17] !==null && boardSpots[22]!==null){
+    document.getElementById('cat2').textContent = ""
+  }
+  if(boardSpots[3] !==null && boardSpots[8]!==null && boardSpots[13]!==null && boardSpots[18] !==null && boardSpots[23]!==null){
+    document.getElementById('cat3').textContent = ""
+  }
+  if(boardSpots[4] !==null && boardSpots[9]!==null && boardSpots[14]!==null && boardSpots[19] !==null && boardSpots[24]!==null){
+    document.getElementById('cat4').textContent = ""
+  }
+
+
+
   if(game === null){
     message.innerText = "Select a question. If you earn over 7500 points, you win!"
   } else if (game === "loss") {
@@ -100,10 +125,11 @@ function handleBoxClick(evt) {
 
 function startTimer() {
   // create cached element reference for progress bar
-  let progress = document.querySelector(".progress-bar")
+  
   timer = setInterval(function() {
   // decreases time by one second
   timeLeft -= 1
+  
   // adjusts the width of progress bar to time left
   progress.style =`width: ${timeLeft/30 *100}%`
   // progress.innerText = timeLeft
@@ -126,6 +152,8 @@ function resetTimer() {
 //-----------------------DISPLAYS-QUESTION----------------------//
 
 function renderQuestionCard() {
+  // reset progress bar
+  progress.style =`width: 100%`
   // hide render message
   message.style.display = "none"
   // find the corresponding question
@@ -162,6 +190,7 @@ function checkAnswer() {
   questionCard.style.display = "none"
   // hide progress bar
   progressBar.style.display = "none"
+  render()
   renderResult()
   // check if there's a win
   checkGameStatus()
@@ -172,15 +201,6 @@ function checkAnswer() {
 
 
 function renderResult() {
-   // updates the board to display which boxes have already been picked 
-   boardSpots.forEach(function(spot, idx){
-    if(spot !== null) {
-         boxes[idx].innerText = ""
-    } 
-  })
-  // hides category name if all items in that category are empty
-  // if(boardSpots[0] !== null && boardSpots[0] && )
-
   // renders message for right or wrong answer 
   message.style.display = "grid"
   message.classList.remove("animate__animated", "animate__headShake")
