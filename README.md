@@ -16,7 +16,7 @@ Movie Buff is a movie-themed quiz game inspired by Jeopardy!
 Click [here](https://movie-buff-unit-1-project.surge.sh/) to play.  
 
 ### Instructions
-Select a question and enter your guess. Earn over 7400 points to win.  
+Select a question and enter your guess. Earn over 7500 points to win.  
  
 Wireframe:
 ![wireframe](assets/movie-buff-wireframe.png)  
