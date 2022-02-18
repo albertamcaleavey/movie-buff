@@ -1,11 +1,8 @@
-
-  /*-------------------------------- Constants --------------------------------*/
 import{questions, answers} from "../data/questions&answers.js"
 const winScore = 7500
 const correctAudio = new Audio ("../audio/correct.wav")
 const incorrectAudio = new Audio ("../audio/incorrect.mp3")
 
-/*---------------------------- Variables (state) ----------------------------*/
 let game
 let boardSpots 
 let clickedIdx
@@ -14,7 +11,6 @@ let score
 let timer
 let timeLeft 
 
-/*------------------------ Cached Element References ------------------------*/
 let boxes = document.querySelectorAll('.box')
 let board = document.getElementById('board')
 let message = document.getElementById('message')
@@ -26,12 +22,10 @@ let cardText = document.getElementById("question")
 let input = document.getElementById('input')
 let progress = document.querySelector(".progress-bar")
 
-/*----------------------------- Event Listeners -----------------------------*/
 board.addEventListener("click", handleBoxClick)
 document.getElementById("submit").addEventListener("click", checkAnswer)
 replay.addEventListener("click", init)
 
-/*-------------------------------- Functions --------------------------------*/
 init()
 
 function init() {
@@ -47,7 +41,6 @@ function init() {
   initialRender()
 } 
 
-//-------------------DISPLAY-INITIAL-GAME-STATE-------------------//
 function initialRender() {
   // hide question card and progress bar 
   hideQuestionCard()
@@ -69,14 +62,10 @@ function initialRender() {
   message.innerText = "Select a question. If you earn over 7500 points, you win!"
 }
 
-//-------------------------------HIDE-QUESTION-CARD---------------------------------//
-
 function hideQuestionCard() {
   questionCard.style.display = "none"
   progressBar.style.display = "none"
 }
-
-// ----------------------UPDATE-GAME-BOARD-----------------------//
 
 function renderUpdate() {
   // updates board
@@ -119,10 +108,6 @@ function renderUpdate() {
   }
 }
 
-
-
-//---------------------WHEN-BOX-IS-CLICKED----------------------//
-
 function handleBoxClick(evt) {
   let clickedBox = evt.target
   // if a category box or a box that was already chosen is clicked, nothing happens
@@ -136,8 +121,6 @@ function handleBoxClick(evt) {
   renderQuestionCard()
   startTimer()
 }
-
-// ---------------------------TIMER----------------------------//
 
 function startTimer() {
   timer = setInterval(function() {
@@ -158,11 +141,7 @@ function resetTimer() {
   timer = null
 }
 
-
-//-----------------------DISPLAYS-QUESTION----------------------//
-
 function renderQuestionCard() {
-  // hide replay button
   replay.style.display = "none"
   // reset progress bar
   progress.style =`width: 100%`
@@ -172,17 +151,11 @@ function renderQuestionCard() {
   let currentQuestion = questions[clickedIdx]
   // set the current question text to the card
   cardText.innerText = currentQuestion
-  // display question card
   questionCard.style.display = "grid"
-  // display timer
   progressBar.style.display = "grid"
 }
 
-
-//---------------------WHEN-ANSWER-IS-SUBMITED----------------------//
-
 function checkAnswer() {
-  // retrieve user input and make it lowercase
   let lowerInput = input.value.toLowerCase()
   // checks if input is correct: updates playerAns variable and score
   if(lowerInput === answers[clickedIdx]){
@@ -190,29 +163,20 @@ function checkAnswer() {
     score += parseInt(boxes[clickedIdx].textContent)
   } else {
     playerAns= "incorrect"
-    // create and call a render correct answer function??
   }
-  // update game board
   renderUpdate()
-  // update render message
   renderResult()
-  // check for a win/loss
   checkGameStatus()
   resetTimer()
 }
 
-// -----------UPDATE-RENDER-MSG- W/-RESULT-OF-ANSWER-------------//
-
-
 function renderResult() {
-  // renders message for right or wrong answer 
   message.style.display = "grid"
   message.classList.remove("animate__animated", "animate__shakeX", "animate__animated", "animate__heartBeat")
   if(playerAns === "correct") {
     hideQuestionCard()
     message.innerText = "Correct! Pick again"
     message.classList.add("animate__animated", "animate__heartBeat")
-    // show score board with updated score if answer is right
     scoreboard.style.display = "grid"
     scoreboard.innerText = score
     playCorrectAudio()
@@ -226,8 +190,6 @@ function renderResult() {
     playIncorrectAudio()
   }
 }
-
-//--------------------PLAY-AUDIO-W/-ADJUSTED-VOLUME---------------//
 
 function playCorrectAudio() {
   correctAudio.load()
@@ -246,8 +208,6 @@ function playIncorrectAudio() {
     incorrectAudio.pause()
   }, 450)
 }
-
-//-----------------------CHECK-STATUS-OF-GAME-----------------------//
   
 function checkGameStatus(){
   // checks if game is over
@@ -260,8 +220,6 @@ function checkGameStatus(){
   } 
 }
 
-//-------------------------CHECK-FOR-A-WIN-/-LOSS------------------//
-
 function checkWin() {
   if(score > winScore){
     game = "win"
@@ -270,9 +228,3 @@ function checkWin() {
   }
   renderUpdate()
 }
-
-
-
-
-
-
