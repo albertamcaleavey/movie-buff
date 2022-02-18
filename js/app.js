@@ -47,11 +47,13 @@ function init() {
   initialRender()
 
   // for presentation:
+
+  // game = "win"
+  // score = 8000
   // checkGameStatus()
   // checkWin()
   // renderUpdate()
-  // game = "win"
-  // score = 8000
+  
 } 
 
 //-------------------DISPLAY-INITIAL-GAME-STATE-------------------//
@@ -118,7 +120,7 @@ function renderUpdate() {
     // display replay button
     replay.style.display = "grid"
   } else if (game === "win") {
-    message.innerText = "You won!"
+    message.innerText = "Congratulations, you won!"
     confetti.start()
     setTimeout (() => {confetti.stop()},10000)
     // display replay button

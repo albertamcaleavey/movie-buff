@@ -33,7 +33,7 @@ h1 {
   padding: 0;
   place-self: center;
   font-family: 'Limelight', cursive;
-  font-size: 105px;
+  font-size: 95px;
   text-shadow: 1px 1px 50px rgb(255, 228, 107);
   color: rgb(255, 228, 107);
 }
@@ -76,7 +76,7 @@ h1 {
 }
 
 .cat {
-  font-size: 22px;
+  font-size: 20px;
   border: 1px rgb(230, 230, 230) solid;
 }
 
