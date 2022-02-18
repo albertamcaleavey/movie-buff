@@ -19,10 +19,8 @@ body {
   background-size: cover;
   background-position: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  color: whitesmoke;
   display: grid;
-  font-size: 2.4rem;
-  font-weight: bold;
+  /* font-size: 2.4rem; */
   min-height: 100vh;
   grid-template-columns: 1fr 60% 1fr;
   grid-template-rows: 20% 10% 60% 10%;
@@ -49,6 +47,7 @@ h1 {
   place-self: center;
   text-align: center;
   font-size: 30px;
+  color: white;
 }
 
 #board {
@@ -90,52 +89,32 @@ h1 {
   background-color: rgb(243, 239, 234);
 }
 
-#light-left {
-  grid-column: 1 / 4;
-  grid-row: 1 / 6 ;
-  place-self: start;
-  display: none;
-}
-
-#light-right {
-  grid-column: 4 / 1;
-  grid-row: 1 / 6 ;
-  place-self: end;
-  display: none;
-}
-
 #light-bottom-left {
   grid-column: 1;
-  grid-row: 4 ;
-  justify-self: start;
-  align-self: end;
-  display: none;
+  grid-row: 5 / 3 ;
+  place-self: end;
+  width: 100%;
 }
 
 #light-bottom-right {
-  grid-column: 4 / 1;
-  grid-row: 6 / 1 ;
+  grid-column: 3;
+  grid-row: 5 / 3 ;
   place-self: end;
-  display: none;
+  width: 100%;
 }
 
 #scoreboard {
+  background-image: url(/assets/star-score.png);
   grid-column: 1;
-  grid-row: 2;
-  height: 100px;
-  width: 100px;
-  place-self: end center;
-  margin-bottom: 31px;
-  color: gold rgb(182, 182, 182) rgb(211, 0, 0) rgb(75, 0, 0) rgb(26, 26, 26);
+  grid-row: 1 / 3;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: stretch;
+  place-content: center;
+  font-size: 25px;
+  padding-top: 10px;
   display: none;
-}
-
-#score {
-  grid-column: 1;
-  grid-row: 1;
-  align-self: end;
-  padding-left: 100px;
-  color: black;
 }
 
 .btn-primary {
@@ -191,7 +170,7 @@ h1 {
 #input {
   grid-column: 1;
   grid-row: 2;
-
+  font-size: 20px;
   margin-bottom: 30px;
   width: 48%;
   height: 40%;

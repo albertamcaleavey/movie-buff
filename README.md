@@ -20,17 +20,19 @@ Select a question. Answer more than half of them right, earning over 7500 points
  
 Wireframe:
 ![wireframe](assets/movie-buff-wireframe.png)  
- 
+
 Starting game screen:
 ![starting game screen](assets/starting-game-screen.png)
 
 ## Technologies Used  
-- JavaScript
-- HTML
-- CSS  
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)  
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)  
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 ## Credits  
-Some questions were found at [jeopardyquestions.com](https://jeopardyquestions.com/).
+[Questoins](https://jeopardyquestions.com/)  
+[Confetti](https://github.com/mathusummut/)  
+[Audio](https://freesound.org/)  
 
 ## Next Steps  
 - add a multi-player option

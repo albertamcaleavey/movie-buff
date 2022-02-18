@@ -25,11 +25,10 @@ let message = document.getElementById('message')
 let progressBar = document.querySelector('.progress')
 let replay = document.querySelector(".btn-primary")
 let scoreboard = document.getElementById("scoreboard")
-let scoreEl = document.getElementById('score')
+// let scoreEl = document.getElementById('score')
 let questionCard = document.querySelector(".background")
 let cardText = document.getElementById("question")
 let input = document.getElementById('input')
-
 let progress = document.querySelector(".progress-bar")
 /*----------------------------- Event Listeners -----------------------------*/
 board.addEventListener("click", handleBoxClick)
@@ -55,11 +54,15 @@ function init() {
 
 //-------------------DISPLAY-INITIAL-GAME-STATE-------------------//
 function initialRender() {
-  // hide question card, progress bar and scoreboard
+  // hide question card and progress bar 
   hideQuestionCard()
-  scoreboard.style.display = "none"
-  scoreEl.style.display = "none"
   replay.style.display = "none"
+  // display category names
+  document.getElementById('cat0').innerText = "Movie Magic"
+  document.getElementById('cat1').innerText = "Shady Characters"
+  document.getElementById('cat2').innerText = "The Oscars"
+  document.getElementById('cat3').innerText = "Movies of the 200s"
+  document.getElementById('cat4').innerText = "Famous Quotes"
   // display box prices 
   document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
   document.querySelectorAll(".four-hun").forEach((el) => el.innerText = "400")
@@ -215,12 +218,11 @@ function renderResult() {
     message.classList.add("animate__animated", "animate__heartBeat")
     // show score board with updated score if answer is right
     scoreboard.style.display = "grid"
-    scoreEl.style.display = "grid"
-    scoreEl.innerText = score
+    scoreboard.innerText = score
     playCorrectAudio()
   } if (playerAns === "incorrect") {
     // delays hiding of question card
-  setTimeout (() => {hideQuestionCard()},2000)
+  setTimeout (() => {hideQuestionCard()},3000)
     // show correct answer
     cardText.innerText = `The correct answer is ${answers[clickedIdx]}`
     message.innerText = "Incorrect, pick again"

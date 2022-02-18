@@ -23,7 +23,7 @@ const questions = [
   "Anthony Hopkins stars in this psychological horror film based on a best selling book of the same name",
  "The first black woman to win an oscar, she won Best Performance by an Actress in a Leading Role in 1940 for her role in Gone With the Wind",
  "A paraplegic marine is sent on a unique mission in this highest grossing movie of the decade directed by James Cameron. ",
- "There's no crying in baseball!"
+ '"There\'s no crying in baseball!"'
  ]
   
  const answers = [
