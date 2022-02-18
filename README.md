@@ -2,14 +2,14 @@
 Movie Buff is a movie-themed quiz game inspired by Jeopardy! 
 
 ## Motivation  
-
+I wanted to make this game becuase my family and I watch Jeopardy! together regularly, and my favorite categories are those related to film and tv. I took design inspiration from the old fashioned marquee at the movie theater in my town in addition to the originial Jeopardy! game board.
 
 ## Getting Started  
 Click [here](https://movie-buff-unit-1-project.surge.sh/) to play.  
 
 ### Instructions
 Select a question and enter your guess. Earn over 7500 points to win.  
- 
+
 Wireframe:
 ![wireframe](assets/movie-buff-wireframe.png)  
 
