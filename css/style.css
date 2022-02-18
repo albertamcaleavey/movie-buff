@@ -20,7 +20,6 @@ body {
   background-position: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   display: grid;
-  /* font-size: 2.4rem; */
   min-height: 100vh;
   grid-template-columns: 1fr 60% 1fr;
   grid-template-rows: 20% 10% 60% 10%;
@@ -34,7 +33,7 @@ h1 {
   padding: 0;
   place-self: center;
   font-family: 'Limelight', cursive;
-  font-size: 95px;
+  font-size: 105px;
   text-shadow: 1px 1px 50px rgb(255, 228, 107);
   color: rgb(255, 228, 107);
 }
@@ -67,6 +66,7 @@ h1 {
 
 .btn-primary {
   font-size: 15px;
+  display: none;
 }
 
 #marquee {
@@ -123,7 +123,7 @@ h1 {
   place-self: center;
 }
 
- .card {
+.card {
   grid-column: 2;
   grid-row: 3;
   justify-self: start;

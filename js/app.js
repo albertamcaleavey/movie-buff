@@ -2,7 +2,6 @@
   /*-------------------------------- Constants --------------------------------*/
 import{questions, answers} from "../data/questions&answers.js"
 const winScore = 7500
-
 const correctAudio = new Audio ("../audio/correct.wav")
 const incorrectAudio = new Audio ("../audio/incorrect.mp3")
 
@@ -18,18 +17,15 @@ let timeLeft
 /*------------------------ Cached Element References ------------------------*/
 let boxes = document.querySelectorAll('.box')
 let board = document.getElementById('board')
-
-// having boxes and board is repetitive 
-// change event listener to listen for boxes instead of board
 let message = document.getElementById('message')
 let progressBar = document.querySelector('.progress')
 let replay = document.querySelector(".btn-primary")
 let scoreboard = document.getElementById("scoreboard")
-// let scoreEl = document.getElementById('score')
 let questionCard = document.querySelector(".background")
 let cardText = document.getElementById("question")
 let input = document.getElementById('input')
 let progress = document.querySelector(".progress-bar")
+
 /*----------------------------- Event Listeners -----------------------------*/
 board.addEventListener("click", handleBoxClick)
 document.getElementById("submit").addEventListener("click", checkAnswer)
@@ -40,16 +36,22 @@ init()
 
 function init() {
   game = null
+  score = 0
   clickedIdx = null
   playerAns = null
-  score = 0
   timer = null
   timeLeft = null
   resetTimer()
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
-  // ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
-  
+
   initialRender()
+
+  // for presentation:
+  // checkGameStatus()
+  // checkWin()
+  // renderUpdate()
+  // game = "win"
+  // score = 8000
 } 
 
 //-------------------DISPLAY-INITIAL-GAME-STATE-------------------//
@@ -57,6 +59,7 @@ function initialRender() {
   // hide question card and progress bar 
   hideQuestionCard()
   replay.style.display = "none"
+  scoreboard.style.display = "none"
   // display category names
   document.getElementById('cat0').innerText = "Movie Magic"
   document.getElementById('cat1').innerText = "Shady Characters"
@@ -117,7 +120,7 @@ function renderUpdate() {
   } else if (game === "win") {
     message.innerText = "You won!"
     confetti.start()
-    setTimeout (() => {confetti.stop()},30000)
+    setTimeout (() => {confetti.stop()},10000)
     // display replay button
     replay.style.display = "grid"
   }
@@ -222,7 +225,7 @@ function renderResult() {
     playCorrectAudio()
   } if (playerAns === "incorrect") {
     // delays hiding of question card
-  setTimeout (() => {hideQuestionCard()},3000)
+    setTimeout (() => {hideQuestionCard()},3000)
     // show correct answer
     cardText.innerText = `The correct answer is ${answers[clickedIdx]}`
     message.innerText = "Incorrect, pick again"
@@ -254,14 +257,14 @@ function playIncorrectAudio() {
 //-----------------------CHECK-STATUS-OF-GAME-----------------------//
   
 function checkGameStatus(){
-// checks if game is over
-let checkBoard = boardSpots.every(function(spot) {
+  // checks if game is over
+  let checkBoard = boardSpots.every(function(spot) {
   return spot !== null
-})
-// if the game is over, check for win/ loss
-if(checkBoard=== true){
-  checkWin()
-} 
+  })
+  // if the game is over, check for win/ loss
+  if(checkBoard=== true){
+    checkWin()
+  } 
 }
 
 //-------------------------CHECK-FOR-A-WIN-/-LOSS------------------//
