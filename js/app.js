@@ -45,15 +45,6 @@ function init() {
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
 
   initialRender()
-
-  // for presentation:
-
-  // game = "win"
-  // score = 8000
-  // checkGameStatus()
-  // checkWin()
-  // renderUpdate()
-  
 } 
 
 //-------------------DISPLAY-INITIAL-GAME-STATE-------------------//

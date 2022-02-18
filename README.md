@@ -1,16 +1,8 @@
-
-
-<!-- references
-
-audio:
-https://freesound.org/people/RICHERlandTV/sounds/216090/
-https://freesound.org/people/JohnsonBrandEditing/sounds/173932/
-https://freesound.org/people/VlatkoBlazek/sounds/192000/
-
--->
-
 # Movie Buff
 Movie Buff is a movie-themed quiz game inspired by Jeopardy! 
+
+## Motivation  
+
 
 ## Getting Started  
 Click [here](https://movie-buff-unit-1-project.surge.sh/) to play.  
@@ -37,4 +29,9 @@ Starting game screen:
 ## Next Steps  
 - add a multi-player option
 - add responsive design
-- refresh the board with new questions when a new game starts 
+- refresh the board with new questions when a new game starts  
+- add light/ dark mode
+- add applause audio on a win
+- give the player a hint when their answer is incorrect 
+- replace the question section with a modal
+- add more styling and a label to the scoreboard
