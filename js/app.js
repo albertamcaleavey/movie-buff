@@ -50,7 +50,7 @@ function initialRender() {
   document.getElementById('cat0').innerText = "Movie Magic"
   document.getElementById('cat1').innerText = "Shady Characters"
   document.getElementById('cat2').innerText = "The Oscars"
-  document.getElementById('cat3').innerText = "Movies of the 200s"
+  document.getElementById('cat3').innerText = "Movies of the 2000s"
   document.getElementById('cat4').innerText = "Famous Quotes"
   // display box prices 
   document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
