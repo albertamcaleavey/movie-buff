@@ -174,7 +174,7 @@ function renderResult() {
     playCorrectAudio()
   } if (playerAns === "incorrect") {
     // delays hiding of question card
-    setTimeout (() => {hideQuestionCard()},3000)
+    setTimeout (() => {hideQuestionCard()},2000)
     // show correct answer
     cardText.innerText = `The correct answer is ${answers[clickedIdx]}`
     message.innerText = "Incorrect, pick again"
@@ -203,13 +203,11 @@ function playIncorrectAudio() {
   
 function checkGameStatus(){
   // checks if game is over
-  let checkBoard = boardSpots.every(function(spot) {
+  if (boardSpots.every(function(spot) {
   return spot !== null
-  })
-  // if the game is over, check for win/ loss
-  if(checkBoard=== true){
+  })) {
     checkWin()
-  } 
+  }
 }
 
 function checkWin() {
