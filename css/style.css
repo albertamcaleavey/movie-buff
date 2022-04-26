@@ -21,14 +21,12 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   display: grid;
   min-height: 100vh;
-  grid-template-columns: 1fr 60% 1fr;
-  grid-template-rows: 20% 10% 60% 10%;
+  grid-template: 20% 10% 60% 10% / 1fr 60% 1fr;
   font-family:'Teko', sans-serif;
 }
 
 h1 {
-  grid-column: 2;
-  grid-row: 2;
+  grid-area: 2 / 2;
   margin: 0;
   padding: 0;
   place-self: center;
@@ -39,8 +37,7 @@ h1 {
 }
 
 #message {
-  grid-column: 2;
-  grid-row: 1;
+  grid-area: 1 / 2;
   margin: 0;
   padding: 0;
   place-self: center;
@@ -51,11 +48,9 @@ h1 {
 
 #board {
   display: grid;
-  grid-template-columns: repeat(5, 20%);
-  grid-template-rows: repeat(6, 16.67%);
+  grid-template: repeat(6, 16.67%) / repeat(5, 20%);
   border: 1px rgb(192, 192, 192) solid;
-  grid-column: 2;
-  grid-row: 3;
+  grid-area: 3/ 2;
   color: rgb(0, 0, 0);
   background-color: rgb(255, 253, 250);
   box-shadow: 0px 0px 8px 2px rgb(241, 228, 112);
@@ -118,14 +113,12 @@ h1 {
 }
 
 .btn-primary {
-  grid-column: 2;
-  grid-row: 4;
+  grid-area: 4 / 2;
   place-self: center;
 }
 
 .card {
-  grid-column: 2;
-  grid-row: 3;
+  grid-area: 3 / 2;
   justify-self: start;
   align-self: flex-start;
   color: black;
@@ -133,11 +126,9 @@ h1 {
 }
 
 .background {
-  grid-column: 2;
-  grid-row: 3;
+  grid-area: 3 / 2;
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 70% 20% 10%;
+  grid-template: 70% 20% 10% / 100%;
   color: black;
   background-color: white;
   place-items: center;
@@ -150,26 +141,23 @@ h1 {
 }
 
 #question {
-  grid-column: 1;
-  grid-row: 1;
+  grid-area: 1 / 1;
   text-align: center;
   padding: 20px;
   font-size: 30px;
 }
 
 #submit {
-  grid-column: 1;
-  grid-row: 2;
+  grid-area: 2 / 1;
   height: 8%;
   width: 8%;
   justify-self: end;
   margin-bottom: 36px;
-  margin-right: 168px;
+  margin-right: 120px;
 }
 
 #input {
-  grid-column: 1;
-  grid-row: 2;
+  grid-area: 2 / 1;
   font-size: 20px;
   margin-bottom: 30px;
   width: 48%;
@@ -180,8 +168,7 @@ h1 {
 }
 
 .progress {
-  grid-column: 2;
-  grid-row: 3;
+  grid-area: 3 / 2;
   width: 100%;
   align-self: end;
 }
