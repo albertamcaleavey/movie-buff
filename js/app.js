@@ -32,23 +32,22 @@ function init() {
 } 
 
 function initialRender() {
-  // hide question card and progress bar 
   hideQuestionCard()
   replay.style.display = "none"
   scoreboard.style.display = "none"
-  // display category names
+
   document.getElementById('cat0').innerText = "Movie Magic"
   document.getElementById('cat1').innerText = "Shady Characters"
   document.getElementById('cat2').innerText = "The Oscars"
   document.getElementById('cat3').innerText = "Movies of the 2000s"
   document.getElementById('cat4').innerText = "Famous Quotes"
-  // display box prices 
+
   document.querySelectorAll(".two-hun").forEach(el => el.innerText = "200")
   document.querySelectorAll(".four-hun").forEach(el => el.innerText = "400")
   document.querySelectorAll(".six-hun").forEach(el => el.innerText = "600")
   document.querySelectorAll(".eight-hun").forEach(el => el.innerText = "800")
   document.querySelectorAll(".thous").forEach(el => el.innerText = "1000")
-  // display instructions
+
   message.innerText = "Select a question. If you earn over 7500 points, you win!"
 }
 
@@ -58,10 +57,9 @@ function hideQuestionCard() {
 }
 
 function renderUpdate() {
-  // updates board
   input.value = ""
   boardSpots[clickedIdx] = ""
-  // updates the board to display which boxes have already been picked 
+
   boardSpots.forEach(function(spot, idx){
     if(spot !== null) {
       boxes[idx].innerText = ""
@@ -69,8 +67,6 @@ function renderUpdate() {
     } 
   })
 
-
-  // hides category name when category is empty 
   if(boardSpots[0] !==null && boardSpots[5]!==null && boardSpots[10]!==null && boardSpots[15] !==null && boardSpots[20]!==null){
     document.getElementById('cat0').textContent = ""
   }
@@ -86,29 +82,26 @@ function renderUpdate() {
   if(boardSpots[4] !==null && boardSpots[9]!==null && boardSpots[14]!==null && boardSpots[19] !==null && boardSpots[24]!==null){
     document.getElementById('cat4').textContent = ""
   }
-  // updates render message based on win/loss
+
   if (game === "loss") {
     message.innerText = "Game Over, you lost. Click the replay button to try again!"
-    // display replay button
     replay.style.display = "grid"
   } else if (game === "win") {
     message.innerText = "Congratulations, you won!"
     confetti.start()
     setTimeout (() => {confetti.stop()},10000)
-    // display replay button
     replay.style.display = "grid"
   }
 }
 
 function handleBoxClick(evt) {
   let clickedBox = evt.target
-  // if a category box or a box that was already chosen is clicked, nothing happens
+
   if(clickedBox.className === "cat" || clickedBox.innerText === ""){
     return
   }
-  // find the id of the element that was clicked 
   let clickedBoxId = clickedBox.id
-  // separates the number from the rest of the id and turns it into a number
+
   clickedIdx = parseInt(clickedBoxId.split('').splice(3,3).join(''))
   renderQuestionCard()
   startTimer()
@@ -117,7 +110,6 @@ function handleBoxClick(evt) {
 function startTimer() {
   timer = setInterval(function() {
   timeLeft -= 1
-  // adjusts the width of progress bar to time left
   progress.style =`width: ${timeLeft/30 *100}%`
   if (timeLeft < 0) {
     incorrectAudio.play()
@@ -135,13 +127,9 @@ function resetTimer() {
 
 function renderQuestionCard() {
   replay.style.display = "none"
-  // reset progress bar
   progress.style =`width: 100%`
-  // hide render message
   message.style.display = "none"
-  // find the corresponding question
   let currentQuestion = questions[clickedIdx]
-  // set the current question text to the card
   cardText.innerText = currentQuestion
   questionCard.style.display = "grid"
   progressBar.style.display = "grid"
@@ -149,7 +137,6 @@ function renderQuestionCard() {
 
 function checkAnswer() {
   let lowerInput = input.value.toLowerCase()
-  // checks if input is correct: updates playerAns variable and score
   if(lowerInput === answers[clickedIdx]){
     playerAns = "correct"
     score += parseInt(boxes[clickedIdx].textContent)
@@ -173,9 +160,7 @@ function renderResult() {
     scoreboard.innerText = score
     playCorrectAudio()
   } if (playerAns === "incorrect") {
-    // delays hiding of question card
     setTimeout (() => {hideQuestionCard()},2000)
-    // show correct answer
     cardText.innerText = `The correct answer is ${answers[clickedIdx]}`
     message.innerText = "Incorrect, pick again"
     message.classList.add("animate__animated", "animate__headShake")
@@ -202,7 +187,6 @@ function playIncorrectAudio() {
 }
   
 function checkGameStatus(){
-  // checks if game is over
   if (boardSpots.every(function(spot) {
   return spot !== null
   })) {
