@@ -3,13 +3,7 @@ const winScore = 7500
 const correctAudio = new Audio ("../audio/correct.wav")
 const incorrectAudio = new Audio ("../audio/incorrect.mp3")
 
-let game
-let boardSpots 
-let clickedIdx
-let playerAns
-let score
-let timer
-let timeLeft 
+let game, boardSpots, clickedIdx, playerAns, score, timer, timeLeft
 
 let boxes = document.querySelectorAll('.box')
 let board = document.getElementById('board')
@@ -31,10 +25,7 @@ init()
 function init() {
   game = null
   score = 0
-  clickedIdx = null
-  playerAns = null
-  timer = null
-  timeLeft = null
+  clickedIdx, playerAns, timer, timeLeft = null
   resetTimer()
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
 

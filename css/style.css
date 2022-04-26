@@ -160,7 +160,7 @@ h1 {
 #submit {
   grid-column: 1;
   grid-row: 2;
-  height: 8%px;
+  height: 8%;
   width: 8%;
   justify-self: end;
   margin-bottom: 36px;
