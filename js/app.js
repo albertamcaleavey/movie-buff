@@ -28,7 +28,6 @@ function init() {
   clickedIdx, playerAns, timer, timeLeft = null
   resetTimer()
   boardSpots = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
-
   initialRender()
 } 
 
@@ -44,11 +43,11 @@ function initialRender() {
   document.getElementById('cat3').innerText = "Movies of the 2000s"
   document.getElementById('cat4').innerText = "Famous Quotes"
   // display box prices 
-  document.querySelectorAll(".two-hun").forEach((el) => el.innerText = "200")
-  document.querySelectorAll(".four-hun").forEach((el) => el.innerText = "400")
-  document.querySelectorAll(".six-hun").forEach((el) => el.innerText = "600")
-  document.querySelectorAll(".eight-hun").forEach((el) => el.innerText = "800")
-  document.querySelectorAll(".thous").forEach((el) => el.innerText = "1000")
+  document.querySelectorAll(".two-hun").forEach(el => el.innerText = "200")
+  document.querySelectorAll(".four-hun").forEach(el => el.innerText = "400")
+  document.querySelectorAll(".six-hun").forEach(el => el.innerText = "600")
+  document.querySelectorAll(".eight-hun").forEach(el => el.innerText = "800")
+  document.querySelectorAll(".thous").forEach(el => el.innerText = "1000")
   // display instructions
   message.innerText = "Select a question. If you earn over 7500 points, you win!"
 }
@@ -69,6 +68,8 @@ function renderUpdate() {
       boxes[idx].classList.remove('hover')
     } 
   })
+
+
   // hides category name when category is empty 
   if(boardSpots[0] !==null && boardSpots[5]!==null && boardSpots[10]!==null && boardSpots[15] !==null && boardSpots[20]!==null){
     document.getElementById('cat0').textContent = ""
@@ -212,10 +213,6 @@ function checkGameStatus(){
 }
 
 function checkWin() {
-  if(score > winScore){
-    game = "win"
-  } else if (score < winScore) {
-    game = "loss"
-  }
+  game = score > winScore ? "win" : "loss"
   renderUpdate()
 }
